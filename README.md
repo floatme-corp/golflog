@@ -1,6 +1,6 @@
 # golflog [![GoDoc][doc-img]][doc] [![Build Status][ci-img]][ci]
 
-`golflog` is a logging utility package around `go-logr`. It's main use
+`golflog` is a logging utility package built around `go-logr`. It's main use
 is a higher level api for building context based logging iteratively and
 stored in `context.Context`.
 
