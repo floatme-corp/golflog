@@ -97,6 +97,6 @@ Released under the [Apache 2.0 License].
 [Apache 2.0 License]: LICENSE
 [doc-img]: https://pkg.go.dev/badge/github.com/floatme-corp/golflog
 [doc]: https://pkg.go.dev/github.com/floatme-corp/golflog
-[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/test.yml/badge.svg
-[ci]: https://github.com/floatme-corp/golflog/actions/workflows/test.yml
+[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml/badge.svg
+[ci]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml
 
