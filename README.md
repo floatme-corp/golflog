@@ -1,6 +1,6 @@
 # golflog [![GoDoc][doc-img]][doc] [![Build Status][ci-img]][ci]
 
-`golflog` is a logging utility package around `go-logr`. It's main use
+`golflog` is a logging utility package built around `go-logr`. It's main use
 is a higher level api for building context based logging iteratively and
 stored in `context.Context`.
 
@@ -97,6 +97,6 @@ Released under the [Apache 2.0 License].
 [Apache 2.0 License]: LICENSE
 [doc-img]: https://pkg.go.dev/badge/github.com/floatme-corp/golflog
 [doc]: https://pkg.go.dev/github.com/floatme-corp/golflog
-[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/test.yml/badge.svg
-[ci]: https://github.com/floatme-corp/golflog/actions/workflows/test.yml
+[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml/badge.svg
+[ci]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml
 
