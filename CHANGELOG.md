@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0](https://github.com/floatme-corp/golflog/compare/v1.0.0...v1.1.0) (2022-03-14)
+
+
+### Features
+
+* add log.wrap and log.info to goflog ([01eb20c](https://github.com/floatme-corp/golflog/commit/01eb20cbeb7daf1a2942d7bb1e848ff85683b2fd))
+
+
+### Bug Fixes
+
+* go string formatting ([fe32c77](https://github.com/floatme-corp/golflog/commit/fe32c77661aeea5bdedc071223c8a6f3edb17dee))
+* **mod:** add stub for mock package ([b515539](https://github.com/floatme-corp/golflog/commit/b515539f8a8c7f7337d62c4a1a305c1039c28c7a))
+
+
+### Miscellaneous
+
+* **doc:** add highlighting to README.md ([d12604e](https://github.com/floatme-corp/golflog/commit/d12604ead64552be82b37fefa8d53cf3e9164b89))
+
 ## 1.0.0 (2022-03-12)
 
 
