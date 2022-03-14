@@ -74,7 +74,7 @@ clean-coverage:
 
 .PHONY: clean-mocks
 clean-mocks:
-	rm -rf mocks
+	rm -r mocks/build_info.go mocks/configurator.go
 
 coverage.out: $(shell find $(REPO_ROOT_DIR) -type f -name '*'.go)
 coverage.out: generate.host
