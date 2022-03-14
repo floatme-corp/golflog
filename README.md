@@ -27,7 +27,7 @@ func main() {
 
     logger, err := golflog.NewLogger(configurator, "RootLoggerName", verbosity)
     if err != nil {
-        panic(fmt.Sprintf("runtime error: failed to setup logging: %s", err.Error))
+        panic(fmt.Sprintf("runtime error: failed to setup logging: %s", err))
     }
 
     ctx := golflog.NewContext(context.Background(), logger)
@@ -77,7 +77,7 @@ import (
 func main() {
     logger, err := golflog.NewLoggerFromEnv("RootLoggerName")
     if err != nil {
-        panic(fmt.Sprintf("runtime error: failed to setup logging: %s", err.Error))
+        panic(fmt.Sprintf("runtime error: failed to setup logging: %s", err))
     }
 
     ctx := golflog.NewContext(context.Background(), logger)
