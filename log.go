@@ -19,6 +19,7 @@
 package golflog
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/go-logr/logr"
@@ -116,4 +117,27 @@ func NewLoggerWithBuildInfo(
 	}
 
 	return log, nil
+}
+
+// Wrap logs the error on the given logger and returns it wrapped by message.
+func Wrap(
+	ctx context.Context,
+	err error,
+	message string,
+	keysAndValues ...interface{},
+) error {
+	logger := AlwaysFromContext(ctx)
+	logger.WithCallDepth(1).Error(err, message, keysAndValues...)
+
+	return fmt.Errorf("%s: %w", message, err)
+}
+
+// Gets a logger from the given context and logs message and optional values.
+func Info(
+	ctx context.Context,
+	message string,
+	keysAndValues ...interface{},
+) {
+	logger := AlwaysFromContext(ctx)
+	logger.WithCallDepth(1).Info(message, keysAndValues...)
 }
