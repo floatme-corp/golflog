@@ -242,3 +242,31 @@ func (suite *InfoSuite) TestWrap() {
 func TestInfo(t *testing.T) {
 	suite.Run(t, new(InfoSuite))
 }
+
+type ErrorSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *ErrorSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *ErrorSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *ErrorSuite) TestWrap() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Error(ctx, errors.New("test"), "message", "key", "value")
+
+	suite.Equal(`"msg"="message" "error"="test" "key"="value"`, buf.String())
+}
+
+func TestError(t *testing.T) {
+	suite.Run(t, new(ErrorSuite))
+}
