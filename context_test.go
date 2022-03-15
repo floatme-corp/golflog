@@ -109,6 +109,17 @@ func (suite *ContextWithNameSuite) TestContextWithName() {
 	suite.Equal(`test "level"=0 "msg"="test"`+"\n", buf.String())
 }
 
+func (suite *ContextWithNameSuite) TestWithName() {
+	cleanup, buf := monkeyPatchFallback()
+	defer cleanup(suite.T())
+
+	_, log := golflog.WithName(context.TODO(), "test")
+	suite.NotNil(log)
+
+	log.Info("test")
+	suite.Equal(`test "level"=0 "msg"="test"`+"\n", buf.String())
+}
+
 func (suite *ContextWithNameSuite) TestMultipleContextWithName() {
 	cleanup, buf := monkeyPatchFallback()
 	defer cleanup(suite.T())
@@ -128,6 +139,17 @@ func TestContextWithName(t *testing.T) {
 
 type ContextWithValuesSuite struct {
 	suite.Suite
+}
+
+func (suite *ContextWithValuesSuite) TestWithValues() {
+	cleanup, buf := monkeyPatchFallback()
+	defer cleanup(suite.T())
+
+	_, log := golflog.WithValues(context.TODO(), "test", "test")
+	suite.NotNil(log)
+
+	log.Info("test")
+	suite.Equal(` "level"=0 "msg"="test" "test"="test"`+"\n", buf.String())
 }
 
 func (suite *ContextWithValuesSuite) TestContextWithValues() {
@@ -176,4 +198,23 @@ func (suite *NewContextSuite) TestNewContext() {
 
 func TestNewContextSuite(t *testing.T) {
 	suite.Run(t, new(NewContextSuite))
+}
+
+type WithNameAndValuesSuite struct {
+	suite.Suite
+}
+
+func (suite *WithNameAndValuesSuite) TestWithNameAndValues() {
+	cleanup, buf := monkeyPatchFallback()
+	defer cleanup(suite.T())
+
+	_, log := golflog.WithNameAndValues(context.TODO(), "test", "testkey", "testval")
+	suite.NotNil(log)
+
+	log.Info("test")
+	suite.Equal(`test "level"=0 "msg"="test" "testkey"="testval"`+"\n", buf.String())
+}
+
+func TestWithNameAndValuesSuite(t *testing.T) {
+	suite.Run(t, new(WithNameAndValuesSuite))
 }

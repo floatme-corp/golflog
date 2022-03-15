@@ -62,6 +62,34 @@ If the context does not have a logger associated with it `golflog` will
 create a fallback logger with the default configuration. If that fails
 it will fallback to logging via `fmt.Fprintln` to `os.Stdout`
 
+`golflog` provides helpers to create a log and a context with a name, values, 
+or both:
+```golang
+func randoFunc(ctx context.Context) {
+    // for tracing logs from this function
+    ctx, log := golflog.WithName(ctx, "randoFunc")
+    log.Info("my log message") // logs `randoFunc "msg"="my log message"`
+}
+
+// assume you have the important value `foo`
+func randoFunc(ctx context.Context, importantValue string) {
+    // for always seeing important value in future logs with this context
+    ctx, log := golflog.WithValues(ctx, "important-value", importantValue)
+    log.Info("my log message") 
+    // logs `"msg"="my log message" "important-value"="foo"`
+}
+
+func randoFunc(ctx context.Context, importantValue string) {
+    ctx, log := golflog.WithNameAndValues(
+        ctx, 
+        "randoFunc", 
+        "important-value", importantValue,
+    )
+    log.Info("my log message")
+    // logs `randoFunc "msg"="my log message" "important-value"="foo"`
+}
+```
+
 ### Env setup
 
 An alternative to calling `golflog.NewLogger` with the parameters, is to call
