@@ -62,7 +62,7 @@ If the context does not have a logger associated with it `golflog` will
 create a fallback logger with the default configuration. If that fails
 it will fallback to logging via `fmt.Fprintln` to `os.Stdout`
 
-`golflog` provides helpers to create a log and a context with a name, values, 
+`golflog` provides helpers to create a log and a context with a name, values,
 or both:
 ```golang
 func randoFunc(ctx context.Context) {
@@ -75,18 +75,49 @@ func randoFunc(ctx context.Context) {
 func randoFunc(ctx context.Context, importantValue string) {
     // for always seeing important value in future logs with this context
     ctx, log := golflog.WithValues(ctx, "important-value", importantValue)
-    log.Info("my log message") 
+    log.Info("my log message")
     // logs `"msg"="my log message" "important-value"="foo"`
 }
 
 func randoFunc(ctx context.Context, importantValue string) {
     ctx, log := golflog.WithNameAndValues(
-        ctx, 
-        "randoFunc", 
+        ctx,
+        "randoFunc",
         "important-value", importantValue,
     )
     log.Info("my log message")
     // logs `randoFunc "msg"="my log message" "important-value"="foo"`
+}
+```
+
+### Logging Convenience Helpers
+
+`Info` and `Error` convenience helpers are provided to log or report an error
+to the logger in the context.
+
+```golang
+func randoFunc(ctx context.Context) {
+    golflog.Info(ctx, "message", "key", "value")
+
+    ...
+
+    golflog.Error(ctx, err, "message", "key, "value")
+}
+```
+
+A `Wrap` helper will log the message at the info level and return a new error
+wrapping the `err` with `message`.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    if err != nil {
+        // Same as:
+        // golflog.Error(ctx, err, "message", "key, "value")
+        // return fmt.Errorf("%s: %w", message, err)
+        return golflog.Wrap(ctx, err, "message", "key, "value")
+    }
 }
 ```
 
