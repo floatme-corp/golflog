@@ -132,7 +132,7 @@ func Wrap(
 	return fmt.Errorf("%s: %w", message, err)
 }
 
-// Gets a logger from the given context and logs message and optional values.
+// Info gets a logger from the given context and logs message and optional values.
 func Info(
 	ctx context.Context,
 	message string,
