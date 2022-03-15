@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.0](https://github.com/floatme-corp/golflog/compare/v1.1.0...v1.2.0) (2022-03-15)
+
+
+### Features
+
+* **context:** add `WithName`, `WithValues`, and `WithNameAndValues` ([7ed8dcb](https://github.com/floatme-corp/golflog/commit/7ed8dcbb38b12f80e760cb39f2e511b160b77365))
+* **log:** add `Error` helper ([90f6969](https://github.com/floatme-corp/golflog/commit/90f6969633bd68bac156dbce125c2a4550a03a46))
+
+
+### Miscellaneous
+
+* **doc:** add missing `"` to README.md ([4ea8838](https://github.com/floatme-corp/golflog/commit/4ea883842cd67d048ac213d2cef13f1ae65ae4dd))
+* **log:** fix docstring ([26af93a](https://github.com/floatme-corp/golflog/commit/26af93ac87d1a8ae87e7d7b09a16c87e87ae772d))
+* **test:** add test for `Info` and `Wrap` ([3871e19](https://github.com/floatme-corp/golflog/commit/3871e19c52e49acdb72e79f2c19f52543af3d2ae))
+
 ## [1.1.0](https://github.com/floatme-corp/golflog/compare/v1.0.0...v1.1.0) (2022-03-14)
 
 
