@@ -18,7 +18,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/floatme-corp/golflog
+    "github.com/floatme-corp/golflog"
 )
 
 func main() {
