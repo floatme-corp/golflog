@@ -336,3 +336,31 @@ func (suite *WarnSuite) TestWarning() {
 func TestWarn(t *testing.T) {
 	suite.Run(t, new(WarnSuite))
 }
+
+type DebugSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *DebugSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *DebugSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *DebugSuite) TestDebug() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Debug(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=1 "msg"="message" "severity"="debug" "key"="value"`, buf.String())
+}
+
+func TestDebug(t *testing.T) {
+	suite.Run(t, new(DebugSuite))
+}

@@ -167,6 +167,22 @@ func randoFunc(ctx context.Context) {
 }
 ```
 
+A `Debug` helper will automatically prepend `severity=debug` to the list of
+key/value pairs and logs out the message at a level 1 higher than the level
+of the logger in the `context.Context`. This helper should be used sparingly,
+and instead logging levels should be used. It is included to make it easier
+for log aggregation services to key off.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.V(ctx, 1).Info("message", "severity", "warning", "key", "value")
+    golflog.Debug(ctx, "message", "key", "value")
+}
+```
+
 ### Env setup
 
 An alternative to calling `golflog.NewLogger` with the parameters, is to call

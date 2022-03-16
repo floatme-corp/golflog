@@ -164,7 +164,7 @@ func V(ctx context.Context, level int) logr.Logger {
 	return logger.V(level)
 }
 
-// NOTE(jkoelker) The Warn/Warning helpers, should be used sparingly.
+// NOTE(jkoelker) The Warn/Warning and Debug helpers, should be used sparingly.
 
 // Warn gets a logger from the given context and logs the message with `severity=warning`
 // prepended into the passed key/value.
@@ -184,4 +184,15 @@ func Warning(ctx context.Context, message string, keysAndValues ...interface{}) 
 
 	ctx = NewContext(ctx, logger)
 	Warn(ctx, message, keysAndValues...)
+}
+
+// Debug get a logger from the given context at one level higher than the current level and log
+// the message. Prepends `severity=debug` to the passed key/value.
+func Debug(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.V(1).Info(message, append([]interface{}{"severity", "debug"}, keysAndValues...)...)
 }
