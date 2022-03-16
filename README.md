@@ -51,6 +51,14 @@ func HandleUser(ctx context.Context, userID string) {
     ctx = golflog.ContextWithValues(ctx, "user_id", userID)
 }
 ```
+
+The name and values can be setup together in one shot:
+```golang
+func HandleUser(ctx context.Context, userID string) {
+    ctx = golflog.ContextWithNameAndValues(ctx, "Queue", "user_id", userID)
+}
+```
+
 Funcitons are guaranteed to be able to get a logger from any context:
 ```golang
 func randoFunc(ctx context.Context) {

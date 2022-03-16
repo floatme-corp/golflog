@@ -181,6 +181,24 @@ func TestContextWithValues(t *testing.T) {
 	suite.Run(t, new(ContextWithValuesSuite))
 }
 
+type ContextWithNameAndValuesSuite struct {
+	suite.Suite
+}
+
+func (suite *ContextWithNameAndValuesSuite) TestContextWithNameAndValues() {
+	cleanup, buf := monkeyPatchFallback()
+	defer cleanup(suite.T())
+
+	ctx := golflog.ContextWithNameAndValues(context.TODO(), "test", "testkey", "testval")
+
+	golflog.Info(ctx, "test")
+	suite.Equal(`test "level"=0 "msg"="test" "testkey"="testval"`+"\n", buf.String())
+}
+
+func TestContextWithNameAndValues(t *testing.T) {
+	suite.Run(t, new(ContextWithNameAndValuesSuite))
+}
+
 type NewContextSuite struct {
 	suite.Suite
 }
