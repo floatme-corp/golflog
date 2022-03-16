@@ -207,7 +207,7 @@ func (suite *WrapSuite) TestWrap() {
 
 	err := golflog.Wrap(ctx, errors.New("test"), "message", "key", "value")
 
-	suite.Equal(`"msg"="message" "error"="test" "key"="value"`, buf.String())
+	suite.Equal(`"msg"="message" "error"="test" "severity"="error" "key"="value"`, buf.String())
 	suite.ErrorContains(err, "message: test")
 }
 
@@ -229,14 +229,14 @@ func (suite *InfoSuite) TearDownTest() {
 	suite.configurator.AssertExpectations(suite.T())
 }
 
-func (suite *InfoSuite) TestWrap() {
+func (suite *InfoSuite) TesInfo() {
 	buf, logger := bufferLogger()
 
 	ctx := golflog.NewContext(context.TODO(), logger)
 
 	golflog.Info(ctx, "message", "key", "value")
 
-	suite.Equal(`"level"=0 "msg"="message" "key"="value"`, buf.String())
+	suite.Equal(`"level"=0 "msg"="message" "severity"="info" "key"="value"`, buf.String())
 }
 
 func TestInfo(t *testing.T) {
@@ -264,7 +264,7 @@ func (suite *ErrorSuite) TestError() {
 
 	golflog.Error(ctx, errors.New("test"), "message", "key", "value")
 
-	suite.Equal(`"msg"="message" "error"="test" "key"="value"`, buf.String())
+	suite.Equal(`"msg"="message" "error"="test" "severity"="error" "key"="value"`, buf.String())
 }
 
 func TestError(t *testing.T) {
@@ -297,4 +297,70 @@ func (suite *VSuite) TestV() {
 
 func TestV(t *testing.T) {
 	suite.Run(t, new(VSuite))
+}
+
+type WarnSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *WarnSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *WarnSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *WarnSuite) TestWarn() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Warn(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
+}
+
+func (suite *WarnSuite) TestWarning() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Warning(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
+}
+
+func TestWarn(t *testing.T) {
+	suite.Run(t, new(WarnSuite))
+}
+
+type DebugSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *DebugSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *DebugSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *DebugSuite) TestDebug() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Debug(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=1 "msg"="message" "severity"="debug" "key"="value"`, buf.String())
+}
+
+func TestDebug(t *testing.T) {
+	suite.Run(t, new(DebugSuite))
 }

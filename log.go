@@ -128,12 +128,15 @@ func Wrap(
 ) error {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Error(err, message, keysAndValues...)
+
+	ctx = NewContext(ctx, logger)
+	Error(ctx, err, message, keysAndValues...)
 
 	return fmt.Errorf("%s: %w", message, err)
 }
 
-// Info gets a logger from the given context and logs message and optional values.
+// Info gets a logger from the given context and logs message and optional values with
+// `severity=info` prepended into the passed key/value.
 func Info(
 	ctx context.Context,
 	message string,
@@ -141,10 +144,14 @@ func Info(
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Info(message, keysAndValues...)
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Info(message, append([]interface{}{"severity", "info"}, keysAndValues...)...)
 }
 
-// Error gets a logger from the given context and logs the error and message and optional values.
+// Error gets a logger from the given context and logs the error and message and optional values
+// with `severity=error` prepended into the passed key/value.
 func Error(
 	ctx context.Context,
 	err error,
@@ -153,7 +160,10 @@ func Error(
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Error(err, message, keysAndValues...)
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Error(err, message, append([]interface{}{"severity", "error"}, keysAndValues...)...)
 }
 
 // V gets a logger from the given context for the level specified.
@@ -162,4 +172,37 @@ func V(ctx context.Context, level int) logr.Logger {
 	helper()
 
 	return logger.V(level)
+}
+
+// NOTE(jkoelker) The Warn/Warning and Debug helpers, should be used sparingly.
+
+// Warn gets a logger from the given context and logs the message with `severity=warning`
+// prepended into the passed key/value.
+func Warn(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Info(message, append([]interface{}{"severity", "warning"}, keysAndValues...)...)
+}
+
+// Warning is an alias of the `Warn` function.
+func Warning(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	ctx = NewContext(ctx, logger)
+	Warn(ctx, message, keysAndValues...)
+}
+
+// Debug get a logger from the given context at one level higher than the current level and log
+// the message. Prepends `severity=debug` to the passed key/value.
+func Debug(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.V(1).Info(message, append([]interface{}{"severity", "debug"}, keysAndValues...)...)
 }

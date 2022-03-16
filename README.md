@@ -101,14 +101,21 @@ func randoFunc(ctx context.Context, importantValue string) {
 ### Logging Convenience Helpers
 
 `Info` and `Error` convenience helpers are provided to log or report an error
-to the logger in the context.
+to the logger in the context. A `severity` key is added to each to invocation
+automatically to assist log aggregation services.
 
 ```golang
 func randoFunc(ctx context.Context) {
+    // Same as:
+    // log := golflog.AlwaysFromContext(ctx)
+    // log.Info("message", "severity", "info", "key", "value")
     golflog.Info(ctx, "message", "key", "value")
 
     ...
 
+    // Same as:
+    // log := golflog.AlwaysFromContext(ctx)
+    // log.Error(err, "message", "severity", "error", "key", "value")
     golflog.Error(ctx, err, "message", "key", "value")
 }
 ```
@@ -137,6 +144,49 @@ func randoFunc(ctx context.Context) {
 
     // Will be logged at level 1
     golflog.V(ctx, 1).Info("message", "key", "value")
+}
+```
+
+A `Warn` helper will automatically prepend `severity=warning` to the list of
+key/value pairs and logs out the message. This helper should be used sparingly,
+and instead logging levels should be used. It is included to make it easier
+for log aggregation services to key off.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.Info(ctx, "message", "severity", "warning", "key", "value")
+    golflog.Warn(ctx, "message", "key", "value")
+}
+```
+
+`Warning` is an alias of `Warn`.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.Info(ctx, "message", "severity", "warning", "key", "value")
+    golflog.Warning(ctx, "message", "key", "value")
+}
+```
+
+A `Debug` helper will automatically prepend `severity=debug` to the list of
+key/value pairs and logs out the message at a level 1 higher than the level
+of the logger in the `context.Context`. This helper should be used sparingly,
+and instead logging levels should be used. It is included to make it easier
+for log aggregation services to key off.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.V(ctx, 1).Info("message", "severity", "warning", "key", "value")
+    golflog.Debug(ctx, "message", "key", "value")
 }
 ```
 
