@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0](https://github.com/floatme-corp/golflog/compare/v1.2.0...v1.3.0) (2022-03-16)
+
+
+### Features
+
+* **context:** add `ContextWithNameAndValues` helper ([7c598a2](https://github.com/floatme-corp/golflog/commit/7c598a2f780e0bcf4e01a8e17f2f48565a05c2ff))
+* **log:** add `Debug` helpers ([e2982c3](https://github.com/floatme-corp/golflog/commit/e2982c3ad268c81aed82ed2372d62e8006bb1561))
+* **log:** add `V` helper ([8cc6020](https://github.com/floatme-corp/golflog/commit/8cc602041f894e8e2079eb674d1f0da8cb6733ba))
+* **log:** add `Warn`/`Warning` helpers ([bf2ff7c](https://github.com/floatme-corp/golflog/commit/bf2ff7c6bec829b284f5417262754f98c179d6b1))
+
+
+### Bug Fixes
+
+* **log:** add `severity` to `Error` ([f1af812](https://github.com/floatme-corp/golflog/commit/f1af8129a4e35a335a22100d59539446e84e7541))
+* **log:** add `severity` to `Info` ([3695120](https://github.com/floatme-corp/golflog/commit/3695120c355c30e8bc8ce24ef973e17d363dcfb1))
+* **log:** use `WithCallStackHelper` ([eb48817](https://github.com/floatme-corp/golflog/commit/eb488178237f8ae734b4da9a6f2895c6acf87186))
+* **readme:** fix spelling ([4b2787d](https://github.com/floatme-corp/golflog/commit/4b2787d0ca9334856142a6e219feb57906ec36dd))
+* **test:** fix `Error` test name ([8720459](https://github.com/floatme-corp/golflog/commit/8720459bf0004d933c08ff299a8077684d443ec6))
+
+
+### Miscellaneous
+
+* **readme:** add `severity` documentation ([5c50581](https://github.com/floatme-corp/golflog/commit/5c50581313448e720891546ee25254af751b6aa0))
+
 ## [1.2.0](https://github.com/floatme-corp/golflog/compare/v1.1.0...v1.2.0) (2022-03-15)
 
 
