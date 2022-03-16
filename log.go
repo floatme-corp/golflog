@@ -133,7 +133,8 @@ func Wrap(
 	return fmt.Errorf("%s: %w", message, err)
 }
 
-// Info gets a logger from the given context and logs message and optional values.
+// Info gets a logger from the given context and logs message and optional values with
+// `severity=info` prepended into the passed key/value.
 func Info(
 	ctx context.Context,
 	message string,
@@ -141,7 +142,10 @@ func Info(
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Info(message, keysAndValues...)
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Info(message, append([]interface{}{"severity", "info"}, keysAndValues...)...)
 }
 
 // Error gets a logger from the given context and logs the error and message and optional values.

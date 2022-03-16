@@ -229,14 +229,14 @@ func (suite *InfoSuite) TearDownTest() {
 	suite.configurator.AssertExpectations(suite.T())
 }
 
-func (suite *InfoSuite) TestWrap() {
+func (suite *InfoSuite) TesInfo() {
 	buf, logger := bufferLogger()
 
 	ctx := golflog.NewContext(context.TODO(), logger)
 
 	golflog.Info(ctx, "message", "key", "value")
 
-	suite.Equal(`"level"=0 "msg"="message" "key"="value"`, buf.String())
+	suite.Equal(`"level"=0 "msg"="message" "severity"="info" "key"="value"`, buf.String())
 }
 
 func TestInfo(t *testing.T) {

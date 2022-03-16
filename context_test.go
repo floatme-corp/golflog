@@ -192,7 +192,10 @@ func (suite *ContextWithNameAndValuesSuite) TestContextWithNameAndValues() {
 	ctx := golflog.ContextWithNameAndValues(context.TODO(), "test", "testkey", "testval")
 
 	golflog.Info(ctx, "test")
-	suite.Equal(`test "level"=0 "msg"="test" "testkey"="testval"`+"\n", buf.String())
+	suite.Equal(
+		`test "level"=0 "msg"="test" "testkey"="testval" "severity"="info"`+"\n",
+		buf.String(),
+	)
 }
 
 func TestContextWithNameAndValues(t *testing.T) {
