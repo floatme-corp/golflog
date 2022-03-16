@@ -155,3 +155,11 @@ func Error(
 	helper()
 	logger.Error(err, message, keysAndValues...)
 }
+
+// V gets a logger from the given context for the level specified.
+func V(ctx context.Context, level int) logr.Logger {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	return logger.V(level)
+}

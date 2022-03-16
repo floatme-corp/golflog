@@ -129,6 +129,17 @@ func randoFunc(ctx context.Context) {
 }
 ```
 
+A `V` helper will return a logger from the context at the level requested.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // Will be logged at level 1
+    golflog.V(ctx, 1).Info("message", "key", "value")
+}
+```
+
 ### Env setup
 
 An alternative to calling `golflog.NewLogger` with the parameters, is to call
