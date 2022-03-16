@@ -257,7 +257,7 @@ func (suite *ErrorSuite) TearDownTest() {
 	suite.configurator.AssertExpectations(suite.T())
 }
 
-func (suite *ErrorSuite) TestWrap() {
+func (suite *ErrorSuite) TestError() {
 	buf, logger := bufferLogger()
 
 	ctx := golflog.NewContext(context.TODO(), logger)
