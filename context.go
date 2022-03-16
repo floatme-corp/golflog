@@ -74,6 +74,15 @@ func ContextWithValues(ctx context.Context, keysAndValues ...interface{}) contex
 	return NewContext(ctx, AlwaysFromContext(ctx).WithValues(keysAndValues...))
 }
 
+// ContextWithNameAndValues returns a context with the name and values set in its logger.
+func ContextWithNameAndValues(
+	ctx context.Context,
+	name string,
+	keysAndValues ...interface{},
+) context.Context {
+	return ContextWithName(ContextWithValues(ctx, keysAndValues...), name)
+}
+
 // WithName returns a context and logger with the given `name` set in the context.
 func WithName(ctx context.Context, name string) (context.Context, logr.Logger) {
 	newCtx := ContextWithName(ctx, name)
@@ -88,9 +97,14 @@ func WithValues(ctx context.Context, keysAndValues ...interface{}) (context.Cont
 	return newCtx, AlwaysFromContext(newCtx)
 }
 
-// WithNameAndValues returns a context and logger with the given `name` and `values` set in the context.
-func WithNameAndValues(ctx context.Context, name string, keysAndValues ...interface{}) (context.Context, logr.Logger) {
-	newCtx := ContextWithName(ContextWithValues(ctx, keysAndValues...), name)
+// WithNameAndValues returns a context and logger with the given `name` and `values` set in the
+// context.
+func WithNameAndValues(
+	ctx context.Context,
+	name string,
+	keysAndValues ...interface{},
+) (context.Context, logr.Logger) {
+	newCtx := ContextWithNameAndValues(ctx, name, keysAndValues...)
 
 	return newCtx, AlwaysFromContext(newCtx)
 }
