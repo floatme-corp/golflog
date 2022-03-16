@@ -101,14 +101,21 @@ func randoFunc(ctx context.Context, importantValue string) {
 ### Logging Convenience Helpers
 
 `Info` and `Error` convenience helpers are provided to log or report an error
-to the logger in the context.
+to the logger in the context. A `severity` key is added to each to invocation
+automatically to assist log aggregation services.
 
 ```golang
 func randoFunc(ctx context.Context) {
+    // Same as:
+    // log := golflog.AlwaysFromContext(ctx)
+    // log.Info("message", "severity", "info", "key", "value")
     golflog.Info(ctx, "message", "key", "value")
 
     ...
 
+    // Same as:
+    // log := golflog.AlwaysFromContext(ctx)
+    // log.Error(err, "message", "severity", "error", "key", "value")
     golflog.Error(ctx, err, "message", "key", "value")
 }
 ```
