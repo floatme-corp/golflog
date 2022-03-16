@@ -128,7 +128,9 @@ func Wrap(
 ) error {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Error(err, message, keysAndValues...)
+
+	ctx = NewContext(ctx, logger)
+	Error(ctx, err, message, keysAndValues...)
 
 	return fmt.Errorf("%s: %w", message, err)
 }
@@ -148,7 +150,8 @@ func Info(
 	logger.Info(message, append([]interface{}{"severity", "info"}, keysAndValues...)...)
 }
 
-// Error gets a logger from the given context and logs the error and message and optional values.
+// Error gets a logger from the given context and logs the error and message and optional values
+// with `severity=error` prepended into the passed key/value.
 func Error(
 	ctx context.Context,
 	err error,
@@ -157,7 +160,10 @@ func Error(
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
-	logger.Error(err, message, keysAndValues...)
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Error(err, message, append([]interface{}{"severity", "error"}, keysAndValues...)...)
 }
 
 // V gets a logger from the given context for the level specified.

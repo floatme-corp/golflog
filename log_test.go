@@ -207,7 +207,7 @@ func (suite *WrapSuite) TestWrap() {
 
 	err := golflog.Wrap(ctx, errors.New("test"), "message", "key", "value")
 
-	suite.Equal(`"msg"="message" "error"="test" "key"="value"`, buf.String())
+	suite.Equal(`"msg"="message" "error"="test" "severity"="error" "key"="value"`, buf.String())
 	suite.ErrorContains(err, "message: test")
 }
 
@@ -264,7 +264,7 @@ func (suite *ErrorSuite) TestError() {
 
 	golflog.Error(ctx, errors.New("test"), "message", "key", "value")
 
-	suite.Equal(`"msg"="message" "error"="test" "key"="value"`, buf.String())
+	suite.Equal(`"msg"="message" "error"="test" "severity"="error" "key"="value"`, buf.String())
 }
 
 func TestError(t *testing.T) {
