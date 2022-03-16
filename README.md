@@ -140,6 +140,33 @@ func randoFunc(ctx context.Context) {
 }
 ```
 
+A `Warn` helper will automatically prepend `severity=warning` to the list of
+key/value pairs and logs out the message. This helper should be used sparingly,
+and instead logging levels should be used. It is included to make it easier
+for log aggregation services to key off.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.Info(ctx, "message", "severity", "warning", "key", "value")
+    golflog.Warn(ctx, "message", "key", "value")
+}
+```
+
+`Warning` is an alias of `Warn`.
+
+```golang
+func randoFunc(ctx context.Context) {
+    ...
+
+    // The same as
+    // golflog.Info(ctx, "message", "severity", "warning", "key", "value")
+    golflog.Warning(ctx, "message", "key", "value")
+}
+```
+
 ### Env setup
 
 An alternative to calling `golflog.NewLogger` with the parameters, is to call

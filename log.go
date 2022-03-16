@@ -163,3 +163,25 @@ func V(ctx context.Context, level int) logr.Logger {
 
 	return logger.V(level)
 }
+
+// NOTE(jkoelker) The Warn/Warning helpers, should be used sparingly.
+
+// Warn gets a logger from the given context and logs the message with `severity=warning`
+// prepended into the passed key/value.
+func Warn(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
+	//                argument is passed or an odd number.
+	logger.Info(message, append([]interface{}{"severity", "warning"}, keysAndValues...)...)
+}
+
+// Warning is an alias of the `Warn` function.
+func Warning(ctx context.Context, message string, keysAndValues ...interface{}) {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	ctx = NewContext(ctx, logger)
+	Warn(ctx, message, keysAndValues...)
+}

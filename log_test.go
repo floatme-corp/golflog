@@ -298,3 +298,41 @@ func (suite *VSuite) TestV() {
 func TestV(t *testing.T) {
 	suite.Run(t, new(VSuite))
 }
+
+type WarnSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *WarnSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *WarnSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *WarnSuite) TestWarn() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Warn(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
+}
+
+func (suite *WarnSuite) TestWarning() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.Warning(ctx, "message", "key", "value")
+
+	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
+}
+
+func TestWarn(t *testing.T) {
+	suite.Run(t, new(WarnSuite))
+}
