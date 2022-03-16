@@ -10,7 +10,7 @@ stored in `context.Context`.
 
 ## Use
 
-As close to your application entrypoint or initial context creation, create
+As close to your application entry point or initial context creation, create
 a `Configurator` and `logr.Logger`, then set that logger in the
 `context.Context`:
 ```golang
@@ -42,7 +42,7 @@ func HandleQueue(ctx context.Context) {
     ctx = golflog.ContextWithName(ctx, "Queue")
 }
 ```
-All messages logged from that point forware will have the name added to the
+All messages logged from that point forward will have the name added to the
 existing name: `RootLoggerName.Queue`.
 
 Additional values can be setup as well for future logging:
@@ -59,7 +59,7 @@ func HandleUser(ctx context.Context, userID string) {
 }
 ```
 
-Funcitons are guaranteed to be able to get a logger from any context:
+Functions are guaranteed to be able to get a logger from any context:
 ```golang
 func randoFunc(ctx context.Context) {
     log := golflog.AlwaysFromContext(ctx)
@@ -109,7 +109,7 @@ func randoFunc(ctx context.Context) {
 
     ...
 
-    golflog.Error(ctx, err, "message", "key, "value")
+    golflog.Error(ctx, err, "message", "key", "value")
 }
 ```
 
@@ -123,7 +123,7 @@ func randoFunc(ctx context.Context) {
     if err != nil {
         // Same as:
         // golflog.Error(ctx, err, "message", "key, "value")
-        // return fmt.Errorf("%s: %w", message, err)
+        // return fmt.Errorf("%s: %w", "message", "err")
         return golflog.Wrap(ctx, err, "message", "key, "value")
     }
 }
