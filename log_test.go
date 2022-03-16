@@ -257,7 +257,7 @@ func (suite *ErrorSuite) TearDownTest() {
 	suite.configurator.AssertExpectations(suite.T())
 }
 
-func (suite *ErrorSuite) TestWrap() {
+func (suite *ErrorSuite) TestError() {
 	buf, logger := bufferLogger()
 
 	ctx := golflog.NewContext(context.TODO(), logger)
@@ -269,4 +269,32 @@ func (suite *ErrorSuite) TestWrap() {
 
 func TestError(t *testing.T) {
 	suite.Run(t, new(ErrorSuite))
+}
+
+type VSuite struct {
+	suite.Suite
+
+	configurator *mocks.Configurator
+}
+
+func (suite *VSuite) SetupTest() {
+	suite.configurator = &mocks.Configurator{}
+}
+
+func (suite *VSuite) TearDownTest() {
+	suite.configurator.AssertExpectations(suite.T())
+}
+
+func (suite *VSuite) TestV() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	golflog.V(ctx, 1).Info("message", "key", "value")
+
+	suite.Equal(`"level"=1 "msg"="message" "key"="value"`, buf.String())
+}
+
+func TestV(t *testing.T) {
+	suite.Run(t, new(VSuite))
 }

@@ -126,9 +126,9 @@ func Wrap(
 	message string,
 	keysAndValues ...interface{},
 ) error {
-	// NOTE(jkoelker) Cannot use `Error` here because the call depth would need to be 2.
-	logger := AlwaysFromContext(ctx)
-	logger.WithCallDepth(1).Error(err, message, keysAndValues...)
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+	logger.Error(err, message, keysAndValues...)
 
 	return fmt.Errorf("%s: %w", message, err)
 }
@@ -139,8 +139,9 @@ func Info(
 	message string,
 	keysAndValues ...interface{},
 ) {
-	logger := AlwaysFromContext(ctx)
-	logger.WithCallDepth(1).Info(message, keysAndValues...)
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+	logger.Info(message, keysAndValues...)
 }
 
 // Error gets a logger from the given context and logs the error and message and optional values.
@@ -150,6 +151,15 @@ func Error(
 	message string,
 	keysAndValues ...interface{},
 ) {
-	logger := AlwaysFromContext(ctx)
-	logger.WithCallDepth(1).Error(err, message, keysAndValues...)
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+	logger.Error(err, message, keysAndValues...)
+}
+
+// V gets a logger from the given context for the level specified.
+func V(ctx context.Context, level int) logr.Logger {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	return logger.V(level)
 }
