@@ -3,7 +3,7 @@ module github.com/floatme-corp/golflog
 go 1.17
 
 require (
-	github.com/go-logr/logr v1.2.2
+	github.com/go-logr/logr v1.2.3
 	github.com/go-logr/zapr v1.2.3
 	github.com/spf13/viper v1.10.1
 	github.com/stretchr/testify v1.7.1
