@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/floatme-corp/golflog/compare/v1.3.0...v1.4.0) (2022-03-23)
+
+
+### Features
+
+* **log:** add `logr.Discard` proxy ([fbb3ffd](https://github.com/floatme-corp/golflog/commit/fbb3ffd6c821115546b993b4050a6642a0bc196d))
+
+
+### Miscellaneous
+
+* **docker:** bump golangci/golangci-lint ([42e477e](https://github.com/floatme-corp/golflog/commit/42e477ef50100128431bf99603447a554dabefab))
+* **docker:** bump hadolint/hadolint ([c280e8f](https://github.com/floatme-corp/golflog/commit/c280e8f8121ecfdc1e6c5a8eb7b29ea49ff5ea71))
+* **go:** bump github.com/go-logr/logr from 1.2.2 to 1.2.3 ([21e971c](https://github.com/floatme-corp/golflog/commit/21e971c121914e6622f272cff61b67e1fa9f6b45))
+
 ## [1.3.0](https://github.com/floatme-corp/golflog/compare/v1.2.0...v1.3.0) (2022-03-16)
 
 
