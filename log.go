@@ -206,3 +206,11 @@ func Debug(ctx context.Context, message string, keysAndValues ...interface{}) {
 	//                argument is passed or an odd number.
 	logger.V(1).Info(message, append([]interface{}{"severity", "debug"}, keysAndValues...)...)
 }
+
+// Discard returns a Logger that discards all messages logged to it.  It can be
+// used whenever the caller is not interested in the logs.  Logger instances
+// produced by this function always compare as equal.
+// This is just a proxy to `logr.Discard`.
+func Discard() logr.Logger {
+	return logr.Discard()
+}
