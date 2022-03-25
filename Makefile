@@ -11,7 +11,7 @@ export DOCKER_DEVKIT_IMG ?= $(DOCKER_REPOSITORY):latest-devkit
 export DOCKER_DEVKIT_PHONY_FILE ?= .docker-$(shell echo '$(DOCKER_DEVKIT_IMG)' | tr '/:' '.')
 
 export DOCKER_DEVKIT_GITHUB_ARGS ?= \
-    --env CI \
+	--env CI \
 	--env-file <(env | grep GITHUB_)
 
 export DOCKER_DEVKIT_ARGS ?= \
