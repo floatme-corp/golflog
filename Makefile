@@ -11,6 +11,7 @@ export DOCKER_DEVKIT_IMG ?= $(DOCKER_REPOSITORY):latest-devkit
 export DOCKER_DEVKIT_PHONY_FILE ?= .docker-$(shell echo '$(DOCKER_DEVKIT_IMG)' | tr '/:' '.')
 
 export DOCKER_DEVKIT_GITHUB_ARGS ?= \
+	$(if $(GITHUB_EVENT_PATH),--volume $(GITHUB_EVENT_PATH):$(GITHUB_EVENT_PATH)) \
 	--env CI \
 	--env-file <(env | grep GITHUB_)
 
@@ -39,6 +40,7 @@ ifneq ($(shell command -v docker),)
     endif
 endif
 
+$(DOCKER_DEVKIT_PHONY_FILE): $(shell find $(REPO_ROOT_DIR)/tools -type f -name '*'.go)
 $(DOCKER_DEVKIT_PHONY_FILE): Dockerfile.devkit
 	docker buildx build \
 		$(DOCKER_DEVKIT_BUILDX_ARGS) \
@@ -98,6 +100,17 @@ coverage.html: coverage.out
 coverage.html:
 	go tool cover -html=coverage.out -o coverage.html
 
+.PHONY: goveralls
+goveralls: coverage.out
+goveralls:
+	# NOTE(jkoelker) Shenanigans to securly shuttle the token to goveralls
+	token="$$(mktemp)" && \
+		printenv "GITHUB_TOKEN" > "$${token}" && \
+		goveralls \
+			-repotokenfile="$${token}" \
+			-coverprofile=coverage.out \
+			-service=github && \
+		rm "$${token}"
 
 .PHONY: lint.host-docker
 lint.host-docker:

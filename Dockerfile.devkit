@@ -40,6 +40,7 @@ FROM docker.io/golang:1.18.0-alpine
 RUN apk add --no-cache \
         bash \
         gcc \
+        git \
         libc-dev \
         make
 

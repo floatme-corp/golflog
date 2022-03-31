@@ -23,4 +23,5 @@ import (
 	_ "gotest.tools/gotestsum"
 	_ "mvdan.cc/gofumpt"
 	_ "golang.org/x/tools/cmd/goimports"
+	_ "github.com/mattn/goveralls"
 )

@@ -26,3 +26,9 @@ jobs:
         with:
           name: coverage
           path: coverage.xml
+
+      - name: Send Coveralls Coverage
+        run: make devkit.run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WHAT: make goveralls
