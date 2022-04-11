@@ -3,7 +3,6 @@ module github.com/floatme-corp/golflog/tools
 go 1.17
 
 require (
-	github.com/boumenot/gocover-cobertura v1.2.0
 	github.com/daixiang0/gci v0.3.0
 	github.com/mattn/goveralls v0.0.11
 	golang.org/x/tools v0.1.8

@@ -92,10 +92,6 @@ coverage.out:
 		-v \
 		./...
 
-coverage.xml: coverage.out
-coverage.xml:
-	gocover-cobertura -by-files < coverage.out > coverage.xml
-
 coverage.html: coverage.out
 coverage.html:
 	go tool cover -html=coverage.out -o coverage.html
