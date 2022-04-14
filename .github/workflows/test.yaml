@@ -20,9 +20,10 @@ jobs:
       - name: Test
         run: make devkit.run
         env:
-          WHAT: make coverage.xml
+          WHAT: make coverage.out
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: coverage.xml
+      - name: Send Coveralls Coverage
+        run: make devkit.run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WHAT: make goveralls

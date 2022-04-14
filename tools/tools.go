@@ -18,9 +18,9 @@
 package tools
 
 import (
-	_ "github.com/boumenot/gocover-cobertura"
 	_ "github.com/daixiang0/gci"
 	_ "gotest.tools/gotestsum"
 	_ "mvdan.cc/gofumpt"
 	_ "golang.org/x/tools/cmd/goimports"
+	_ "github.com/mattn/goveralls"
 )
