@@ -135,6 +135,22 @@ func Wrap(
 	return fmt.Errorf("%s: %w", message, err)
 }
 
+// WarnWrap logs the error as a warning and returns it wrapped by message. Useful
+// for handling expected errors that should not be logged at error level.
+func WarnWrap(
+	ctx context.Context,
+	err error,
+	message string,
+	keysAndValues ...interface{},
+) error {
+	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
+	helper()
+
+	logger.Info(message, append([]interface{}{"severity", "warning"}, keysAndValues...)...)
+
+	return fmt.Errorf("%s: %w", message, err)
+}
+
 // Info gets a logger from the given context and logs message and optional values with
 // `severity=info` prepended into the passed key/value.
 func Info(

@@ -211,6 +211,17 @@ func (suite *WrapSuite) TestWrap() {
 	suite.ErrorContains(err, "message: test")
 }
 
+func (suite *WrapSuite) TestWarnWrap() {
+	buf, logger := bufferLogger()
+
+	ctx := golflog.NewContext(context.TODO(), logger)
+
+	err := golflog.WarnWrap(ctx, errors.New("test"), "message", "key", "value")
+
+	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
+	suite.ErrorContains(err, "message: test")
+}
+
 func TestWrap(t *testing.T) {
 	suite.Run(t, new(WrapSuite))
 }
