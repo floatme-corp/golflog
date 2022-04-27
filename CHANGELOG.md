@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.5.0](https://github.com/floatme-corp/golflog/compare/v1.4.0...v1.5.0) (2022-04-27)
+
+
+### Features
+
+* **log:** add `WarnWrap` helper ([e77b76b](https://github.com/floatme-corp/golflog/commit/e77b76b1aa1fa39a2b8ef5697ff4fbd74acceb14))
+
+
+### Bug Fixes
+
+* **devkit:** set safe directory ([83ab80a](https://github.com/floatme-corp/golflog/commit/83ab80a985270b02ee1934579490a892d568641e))
+* **make:** use tabs for make indentation ([417510b](https://github.com/floatme-corp/golflog/commit/417510bc2258c03582523b01ca032141512ace08))
+
+
+### Miscellaneous
+
+* **actions:** rename commits.yml -> commits.yaml ([5c472b7](https://github.com/floatme-corp/golflog/commit/5c472b7d4c21e616d02ee417be3cbb0d4da0fec9))
+* **actions:** use service account for release-please ([4ac251a](https://github.com/floatme-corp/golflog/commit/4ac251a5a07a6475c78026c2fc3777f6992d0165))
+* **docker:** bump golang from 1.17.8-alpine to 1.18.0-alpine ([bce3761](https://github.com/floatme-corp/golflog/commit/bce37613e270e27bed0e007eaff0d3e9ddfa6ec1))
+* **docker:** bump golang from 1.18.0-alpine to 1.18.1-alpine ([ada7218](https://github.com/floatme-corp/golflog/commit/ada72187a30b2f79a2f350583c5edf0ede7f47f3))
+* **docker:** bump golangci/golangci-lint ([36cede7](https://github.com/floatme-corp/golflog/commit/36cede7dae54e9caab4d178248d6f4d94ff1ef06))
+* **docker:** bump hadolint/hadolint ([6bed679](https://github.com/floatme-corp/golflog/commit/6bed6799d53981ed5b42384cae077b0a47871779))
+* **docker:** bump vektra/mockery from v2.10.0 to v2.10.4 ([a1780df](https://github.com/floatme-corp/golflog/commit/a1780dfe142a624f4f07049e460b53b99a7982e1))
+* **docker:** bump vektra/mockery from v2.10.4 to v2.12.1 ([a76da71](https://github.com/floatme-corp/golflog/commit/a76da71a02082a06dd83b2f1fea06d1ef50f02fa))
+* **go:** bump github.com/spf13/viper from 1.10.1 to 1.11.0 ([94275a1](https://github.com/floatme-corp/golflog/commit/94275a1f51641dc5676bce9669bf8d086eb6e261))
+* **tools:** remove cobertura and action ([ab9d684](https://github.com/floatme-corp/golflog/commit/ab9d6843eecd3795b4410b3231e4066ced5836aa))
+* **tools:** use coveralls ([4da485d](https://github.com/floatme-corp/golflog/commit/4da485db603091f61c0afe8bedcd5bcfec670f4a))
+
 ## [1.4.0](https://github.com/floatme-corp/golflog/compare/v1.3.0...v1.4.0) (2022-03-23)
 
 
