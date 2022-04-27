@@ -121,7 +121,9 @@ func randoFunc(ctx context.Context) {
 ```
 
 A `Wrap` helper will log the message at the info level and return a new error
-wrapping the `err` with `message`.
+wrapping the `err` with `message`. A `WarnWrap` helper is also provided to log
+the message with `severity=warning` prepended to the list of key/value pairs
+before returning the wrapped error.
 
 ```golang
 func randoFunc(ctx context.Context) {
@@ -129,9 +131,21 @@ func randoFunc(ctx context.Context) {
 
     if err != nil {
         // Same as:
-        // golflog.Error(ctx, err, "message", "key, "value")
+        // golflog.Error(ctx, err, "message", "key", "value")
         // return fmt.Errorf("%s: %w", "message", "err")
-        return golflog.Wrap(ctx, err, "message", "key, "value")
+        return golflog.Wrap(ctx, err, "message", "key", "value")
+    }
+    ...
+
+    thingID := "1234"
+    if err := findThing(thingID); err != nil {
+        // Suppose you expect this error
+        if err.As(ErrThingNotFound) {
+            // Same as:
+            // golflog.Warn(ctx, "message", "thing_id", thingID)
+            // return fmt.Errorf("%s: %w", "message", "err")
+            return golflog.WarnWrap(ctx, err, "Could not find thing!", "thing_id", thingID)
+        }
     }
 }
 ```
