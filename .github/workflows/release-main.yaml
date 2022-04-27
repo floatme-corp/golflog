@@ -13,6 +13,7 @@ jobs:
         with:
           release-type: go
           package-name: golflog
+          token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
           changelog-types: >-
             [
               {
