@@ -13,7 +13,8 @@ export DOCKER_DEVKIT_PHONY_FILE ?= .docker-$(shell echo '$(DOCKER_DEVKIT_IMG)' |
 export DOCKER_DEVKIT_GITHUB_ARGS ?= \
 	$(if $(GITHUB_EVENT_PATH),--volume $(GITHUB_EVENT_PATH):$(GITHUB_EVENT_PATH)) \
 	--env CI \
-	--env-file <(env | grep GITHUB_)
+	--env-file <(env | grep '^GITHUB_') \
+	--env-file <(env | grep '^GIT_')
 
 export DOCKER_DEVKIT_ARGS ?= \
 	--rm \
@@ -22,7 +23,7 @@ export DOCKER_DEVKIT_ARGS ?= \
 	--env DEVKIT=true \
 	--volume $(REPO_ROOT_DIR):/code:Z \
 	--workdir /code \
-	$(DOCKER_DEVKIT_GITHUB_ARGS) \
+	$(DOCKER_DEVKIT_GITHUB_ARGS)
 
 # NOTE(jkoelker) Comma must not appear in a funciton call, use a variable
 #                as suggested by the documentation.
@@ -58,7 +59,9 @@ devkit.run: devkit
 	docker run \
 		$(DOCKER_DEVKIT_ARGS) \
 		"$(DOCKER_DEVKIT_IMG)" \
-		$(WHAT)
+		/bin/bash -c \
+			'git config --global safe.directory /code \
+			&& $(WHAT)'
 
 .PHONY: dev
 dev: devkit.run
