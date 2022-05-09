@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.5.1](https://github.com/floatme-corp/golflog/compare/v1.5.0...v1.5.1) (2022-05-09)
+
+
+### Miscellaneous
+
+* **docker:** bump vektra/mockery from v2.12.1 to v2.12.2 ([ae36f8a](https://github.com/floatme-corp/golflog/commit/ae36f8a85a9c0f9daa0b65885dd2a38cacd7ba4e))
+
 ## [1.5.0](https://github.com/floatme-corp/golflog/compare/v1.4.0...v1.5.0) (2022-04-27)
 
 
