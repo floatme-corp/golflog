@@ -3,6 +3,7 @@ linters:
   enable-all: true
   disable:
     - exhaustivestruct
+    - exhaustruct
     - golint
     - interfacer
     - maligned
