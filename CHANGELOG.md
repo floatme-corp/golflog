@@ -1,5 +1,18 @@
 # Changelog
 
+### [1.5.1](https://github.com/floatme-corp/golflog/compare/v1.5.0...v1.5.1) (2022-06-01)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.18.1-alpine to 1.18.2-alpine ([3c7cbf1](https://github.com/floatme-corp/golflog/commit/3c7cbf1935cfe125fd57992bfbd2c6dd19ce91f3))
+* **docker:** bump golangci/golangci-lint ([6c295b9](https://github.com/floatme-corp/golflog/commit/6c295b97ae23202560fd5fe815182b5d1dbe7e5d))
+* **docker:** bump golangci/golangci-lint ([399284b](https://github.com/floatme-corp/golflog/commit/399284b1b290831a6aab1126ab2d5f0c834e8274))
+* **docker:** bump vektra/mockery from v2.12.1 to v2.12.2 ([ae36f8a](https://github.com/floatme-corp/golflog/commit/ae36f8a85a9c0f9daa0b65885dd2a38cacd7ba4e))
+* **docker:** bump vektra/mockery from v2.12.2 to v2.13 ([874d133](https://github.com/floatme-corp/golflog/commit/874d1336d5545b6da8e642b130d57a15aeb034a7))
+* **go:** bump github.com/spf13/viper from 1.11.0 to 1.12.0 ([ee77493](https://github.com/floatme-corp/golflog/commit/ee774938313af73dedf49f608538e9f7d926c017))
+* **lint:** disable `exhaustruct` ([b56093c](https://github.com/floatme-corp/golflog/commit/b56093cd5934d7764bdf67e86f4e66cae1e8a9f9))
+
 ## [1.5.0](https://github.com/floatme-corp/golflog/compare/v1.4.0...v1.5.0) (2022-04-27)
 
 
