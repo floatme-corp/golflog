@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.2](https://github.com/floatme-corp/golflog/compare/v1.5.1...v1.5.2) (2022-07-19)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.18.2-alpine to 1.18.3-alpine ([9c96578](https://github.com/floatme-corp/golflog/commit/9c96578e08d98179f8ec011e885ee111c03fee65))
+* **docker:** bump golang from 1.18.3-alpine to 1.18.4-alpine ([c2abd6b](https://github.com/floatme-corp/golflog/commit/c2abd6be12c42094b6832295cdad2dd40ae15c8a))
+* **docker:** bump vektra/mockery from v2.13 to v2.14.0 ([675f75e](https://github.com/floatme-corp/golflog/commit/675f75e0af7e628d0228a6e31e54803234b50048))
+* **go:** bump github.com/stretchr/testify from 1.7.1 to 1.7.2 ([23053fb](https://github.com/floatme-corp/golflog/commit/23053fb4cee40259a331ae4f127617157faea61e))
+* **go:** bump github.com/stretchr/testify from 1.7.2 to 1.7.5 ([efafd87](https://github.com/floatme-corp/golflog/commit/efafd879c127deed5e202b59c796c8d6a0a0c38e))
+* **go:** bump github.com/stretchr/testify from 1.7.5 to 1.8.0 ([8ff6dac](https://github.com/floatme-corp/golflog/commit/8ff6dacadf68701efc2843cfd8803618cb92b68c))
+
 ### [1.5.1](https://github.com/floatme-corp/golflog/compare/v1.5.0...v1.5.1) (2022-06-01)
 
 
