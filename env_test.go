@@ -15,10 +15,10 @@
 
 package golflog_test
 
+// nolint:gci // This is the correct order
 import (
 	"testing"
 
-	// nolint:gci // This is the correct order
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/suite"
 
