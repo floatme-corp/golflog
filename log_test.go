@@ -15,6 +15,7 @@
 
 package golflog_test
 
+// nolint:gci // This is the correct order
 import (
 	"bytes"
 	"context"
@@ -22,7 +23,6 @@ import (
 	"fmt"
 	"testing"
 
-	// nolint:gci // This is the correct order
 	"github.com/go-logr/logr"
 	"github.com/go-logr/logr/funcr"
 	"github.com/stretchr/testify/mock"
