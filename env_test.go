@@ -15,7 +15,6 @@
 
 package golflog_test
 
-// nolint:gci // This is the correct order
 import (
 	"testing"
 
