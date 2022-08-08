@@ -26,17 +26,20 @@ import (
 )
 
 // DefaultConfigurator is the default configurator for fallback logging.
-//nolint: gochecknoglobals // Allow for testing
+//
+//nolint:gochecknoglobals // Allow for testing
 var DefaultConfigurator Configurator = NewZapProductionConfigurator()
 
 // DefaultFallbackOutput is the default io stream jfor fallback logging.
-//nolint: gochecknoglobals // Allow for testing
+//
+//nolint:gochecknoglobals // Allow for testing
 var DefaultFallbackOutput io.Writer = os.Stdout
 
 // AlwaysFromContext retrieves the logger from the context, if it is not
 // found a new production logger at `MaxLevel` will be returned. If that
 // fails a `fmt.Println` based logger is returned.
-// nolint:contextcheck // ALWAYS!
+//
+//nolint:contextcheck // ALWAYS!
 func AlwaysFromContext(ctx context.Context) logr.Logger {
 	if ctx == nil {
 		ctx = context.Background()
