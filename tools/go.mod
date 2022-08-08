@@ -7,14 +7,14 @@ require (
 	github.com/mattn/goveralls v0.0.11
 	golang.org/x/tools v0.1.12
 	gotest.tools/gotestsum v1.8.1
-	mvdan.cc/gofumpt v0.2.1
+	mvdan.cc/gofumpt v0.3.1
 )
 
 require (
 	github.com/dnephin/pflag v1.0.7 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
-	github.com/google/go-cmp v0.5.6 // indirect
+	github.com/google/go-cmp v0.5.7 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/hexops/gotextdiff v1.0.3 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
