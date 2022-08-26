@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.5.3](https://github.com/floatme-corp/golflog/compare/v1.5.2...v1.5.3) (2022-08-26)
+
+
+### Bug Fixes
+
+* **github:** fix codeball permissions ([2bdf5ed](https://github.com/floatme-corp/golflog/commit/2bdf5edf2428c5ae19d84252f8d4e40cd988fe20))
+* **lint:** gofmt ([e1e42c1](https://github.com/floatme-corp/golflog/commit/e1e42c1e30ebc768c2820bf811861f2c09e96387))
+
+
+### Miscellaneous
+
+* **dependabot:** add tools ([bc9f275](https://github.com/floatme-corp/golflog/commit/bc9f275a0573dc0eb7bbd58e246c8861798612ea))
+* **docker:** bump golang from 1.18.4-alpine to 1.19.0-alpine ([b284cdc](https://github.com/floatme-corp/golflog/commit/b284cdc7f2828a1dadfb1587f65291e75261b557))
+* **docker:** bump golangci/golangci-lint ([c302b1e](https://github.com/floatme-corp/golflog/commit/c302b1e40630c7d6d50249c4537ee9417c31dd3c))
+* **docker:** bump golangci/golangci-lint ([8a4b1e1](https://github.com/floatme-corp/golflog/commit/8a4b1e15978ab8b70d1d4141ee36f430b102e721))
+* **github:** add codeball ([40be07c](https://github.com/floatme-corp/golflog/commit/40be07c058d26ff6be32c6512f46a16fd31be65c))
+* **github:** update codeball settings ([4170583](https://github.com/floatme-corp/golflog/commit/41705832e6280d31cef0ebf88429c73348403b5e))
+* **go:** bump github.com/daixiang0/gci from 0.3.0 to 0.6.3 in /tools ([e716297](https://github.com/floatme-corp/golflog/commit/e7162974fd4c853f4d92055ab7b1fded31118062))
+* **go:** bump go.uber.org/zap from 1.21.0 to 1.22.0 ([97c97b9](https://github.com/floatme-corp/golflog/commit/97c97b90fb33d543d7f33bd396a04a6bbf80143d))
+* **go:** bump golang.org/x/tools from 0.1.8 to 0.1.12 in /tools ([ccd92b3](https://github.com/floatme-corp/golflog/commit/ccd92b30489680afc6dd57b04df4c1281d1a8620))
+* **go:** bump gotest.tools/gotestsum from 1.7.0 to 1.8.1 in /tools ([cdda726](https://github.com/floatme-corp/golflog/commit/cdda726c8e8ebb1cc8296736d0cece09c48bf9db))
+* **go:** bump gotest.tools/gotestsum from 1.8.1 to 1.8.2 in /tools ([a3d3a75](https://github.com/floatme-corp/golflog/commit/a3d3a751e44b658e8bbdea10befcc85c2039404c))
+* **go:** bump mvdan.cc/gofumpt from 0.2.1 to 0.3.1 in /tools ([1738eeb](https://github.com/floatme-corp/golflog/commit/1738eebefffc769c5d5e7de03d67c9a00ae95566))
+* **lint:** configure gci ([aef78c1](https://github.com/floatme-corp/golflog/commit/aef78c10ca2f49dc5909005ce65f85f627c01291))
+* **lint:** update lint pattern ([3d521b8](https://github.com/floatme-corp/golflog/commit/3d521b83fdb31d333faf9e4bc3e78723a3eebf11))
+
 ## [1.5.2](https://github.com/floatme-corp/golflog/compare/v1.5.1...v1.5.2) (2022-07-19)
 
 
