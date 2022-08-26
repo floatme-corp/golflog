@@ -12,6 +12,10 @@ jobs:
   codeball_job:
     runs-on: ubuntu-latest
     name: Codeball
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
 
     steps:
       - name: Codeball
@@ -20,5 +24,5 @@ jobs:
           approvePullRequests: "true"
           labelPullRequestsWhenApproved: "true"
           labelPullRequestsWhenReviewNeeded: "true"
-          failJobsWhenReviewNeeded: "true"
+          failJobsWhenReviewNeeded: "false"
           codeSuggestionsFromComments: "true"
