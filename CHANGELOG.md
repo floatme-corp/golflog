@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.5.4](https://github.com/floatme-corp/golflog/compare/v1.5.3...v1.5.4) (2022-10-24)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.19.0-alpine to 1.19.2-alpine ([327b860](https://github.com/floatme-corp/golflog/commit/327b860674d0cdc14388b1132b4db4ca36bc969c))
+* **docker:** bump golangci/golangci-lint ([f0eac32](https://github.com/floatme-corp/golflog/commit/f0eac32359ce0a2cda983312fc430ce99e8f1877))
+* **docker:** bump golangci/golangci-lint ([1ea4f39](https://github.com/floatme-corp/golflog/commit/1ea4f3915227b63c60649ecc23b535def9d511a5))
+* **go:** bump github.com/daixiang0/gci from 0.6.3 to 0.7.0 in /tools ([2559b38](https://github.com/floatme-corp/golflog/commit/2559b383990456f1b2cc57222f385c4aa2f5f1e4))
+* **go:** bump github.com/daixiang0/gci from 0.7.0 to 0.8.0 in /tools ([3994575](https://github.com/floatme-corp/golflog/commit/399457585eee7131fdc94f3384d18589a0ab6db3))
+* **go:** bump github.com/daixiang0/gci from 0.8.0 to 0.8.1 in /tools ([96b0d60](https://github.com/floatme-corp/golflog/commit/96b0d60e11f51616a5495d7183d017c507300c25))
+* **go:** bump github.com/spf13/viper from 1.12.0 to 1.13.0 ([4d33b3b](https://github.com/floatme-corp/golflog/commit/4d33b3b88bf71bef9f938d5797df4d387932886b))
+* **go:** bump github.com/stretchr/testify from 1.8.0 to 1.8.1 ([ea252c5](https://github.com/floatme-corp/golflog/commit/ea252c518a593268c07b6b9b3a05e86fef93c042))
+* **go:** bump go.uber.org/zap from 1.22.0 to 1.23.0 ([1e0dea8](https://github.com/floatme-corp/golflog/commit/1e0dea857d3cc5843c5f2b46682bc6d701afbc7e))
+* **go:** bump mvdan.cc/gofumpt from 0.3.1 to 0.4.0 in /tools ([3b01acf](https://github.com/floatme-corp/golflog/commit/3b01acf0b3dfa5b7bf38200a51aacfb7d3b9d375))
+
 ## [1.5.3](https://github.com/floatme-corp/golflog/compare/v1.5.2...v1.5.3) (2022-08-26)
 
 
