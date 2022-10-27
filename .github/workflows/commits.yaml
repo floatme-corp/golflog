@@ -29,10 +29,9 @@ jobs:
         run: |
           BASE=${{ github.event.pull_request.base.sha }}
           HEAD=${{ github.event.pull_request.head.sha }}
-          MERGES=$(git log --merges --ancestry-path "${BASE}..${HEAD}")
-
+          MERGE=$(git log --merges --ancestry-path "${BASE}..${HEAD}")
           # The merge list should be empty
-          [[ ! -z "${MERGE}" ]] && {
+          [[ -n "${MERGE}" ]] && {
             echo "PR contains merge commits:";
             echo "${MERGE}";
             exit 1;
