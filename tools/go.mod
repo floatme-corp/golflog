@@ -3,7 +3,7 @@ module github.com/floatme-corp/golflog/tools
 go 1.17
 
 require (
-	github.com/daixiang0/gci v0.8.1
+	github.com/daixiang0/gci v0.8.5
 	github.com/mattn/goveralls v0.0.11
 	golang.org/x/tools v0.3.0
 	gotest.tools/gotestsum v1.8.2
