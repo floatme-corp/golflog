@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.5.5](https://github.com/floatme-corp/golflog/compare/v1.5.4...v1.5.5) (2022-11-28)
+
+
+### Bug Fixes
+
+* **actions:** fix merge lint ([f6078c2](https://github.com/floatme-corp/golflog/commit/f6078c2945578fbc37bdb5fa1fa65965d4eef401))
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.19.2-alpine to 1.19.3-alpine ([369b772](https://github.com/floatme-corp/golflog/commit/369b772cb2645c5a58ebd281181615602b7afb77))
+* **docker:** bump hadolint/hadolint ([66f4720](https://github.com/floatme-corp/golflog/commit/66f4720d56c9da7d31854ea48685ae61de611ef0))
+* **docker:** bump vektra/mockery from v2.14.0 to v2.15.0 ([0a9775e](https://github.com/floatme-corp/golflog/commit/0a9775ee35b7e80c01ce49ef5c84ec7f79822933))
+* **go:** bump github.com/daixiang0/gci from 0.8.1 to 0.8.5 in /tools ([5a8a2cf](https://github.com/floatme-corp/golflog/commit/5a8a2cf247e346e8e47ac57430dc61bec62ea06e))
+* **go:** bump github.com/daixiang0/gci from 0.8.5 to 0.9.0 in /tools ([39d928e](https://github.com/floatme-corp/golflog/commit/39d928e0111774a852d085b7de82dfd84d0eed55))
+* **go:** bump github.com/spf13/viper from 1.13.0 to 1.14.0 ([2f932ce](https://github.com/floatme-corp/golflog/commit/2f932ce5c1853bb6b697cfb829bf21c93a8ab1f8))
+* **go:** bump golang.org/x/tools from 0.2.0 to 0.3.0 in /tools ([79d2287](https://github.com/floatme-corp/golflog/commit/79d2287f644496711b5d807c58dcab4958f2f266))
+
 ## [1.5.4](https://github.com/floatme-corp/golflog/compare/v1.5.3...v1.5.4) (2022-10-24)
 
 
