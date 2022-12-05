@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.6](https://github.com/floatme-corp/golflog/compare/v1.5.5...v1.5.6) (2022-12-05)
+
+
+### Miscellaneous
+
+* **go:** bump go.uber.org/zap from 1.23.0 to 1.24.0 ([37f0f1e](https://github.com/floatme-corp/golflog/commit/37f0f1eefc72d3c7241e0f5f9ffc5a1f97546804))
+
 ## [1.5.5](https://github.com/floatme-corp/golflog/compare/v1.5.4...v1.5.5) (2022-11-28)
 
 
