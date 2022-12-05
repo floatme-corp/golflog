@@ -7,7 +7,7 @@ require (
 	github.com/go-logr/zapr v1.2.3
 	github.com/spf13/viper v1.14.0
 	github.com/stretchr/testify v1.8.1
-	go.uber.org/zap v1.23.0
+	go.uber.org/zap v1.24.0
 )
 
 require (
