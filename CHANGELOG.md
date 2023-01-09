@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.7](https://github.com/floatme-corp/golflog/compare/v1.5.6...v1.5.7) (2023-01-09)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.19.3-alpine to 1.19.4-alpine ([ea03094](https://github.com/floatme-corp/golflog/commit/ea03094bb99e94d9eaf33863e93b4934fad580e6))
+* **go:** bump golang.org/x/tools from 0.3.0 to 0.4.0 in /tools ([d166df5](https://github.com/floatme-corp/golflog/commit/d166df58ca84ffcb43a6d83b07604d9576bbe671))
+* **go:** bump golang.org/x/tools from 0.4.0 to 0.5.0 in /tools ([c68e40f](https://github.com/floatme-corp/golflog/commit/c68e40fdd0ffafa8d07df15680d71d2614fe8eda))
+
 ## [1.5.6](https://github.com/floatme-corp/golflog/compare/v1.5.5...v1.5.6) (2022-12-05)
 
 
