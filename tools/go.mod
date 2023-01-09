@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/daixiang0/gci v0.9.0
 	github.com/mattn/goveralls v0.0.11
-	golang.org/x/tools v0.4.0
+	golang.org/x/tools v0.5.0
 	gotest.tools/gotestsum v1.8.2
 	mvdan.cc/gofumpt v0.4.0
 )
@@ -27,7 +27,7 @@ require (
 	go.uber.org/zap v1.17.0 // indirect
 	golang.org/x/mod v0.7.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.3.0 // indirect
+	golang.org/x/sys v0.4.0 // indirect
 	golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
