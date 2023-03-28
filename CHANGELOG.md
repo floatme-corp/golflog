@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.6.0](https://github.com/floatme-corp/golflog/compare/v1.5.7...v1.6.0) (2023-03-28)
+
+
+### Features
+
+* **docker:** revert pre-alpha bump to mockery 3.0 ([980c40f](https://github.com/floatme-corp/golflog/commit/980c40f64d680373da2c86a7ae1086d5a5cd665c))
+* **go:** update go 1.17 -&gt; 1.20 ([00172ce](https://github.com/floatme-corp/golflog/commit/00172ceb1d7f71b3bfc7f897dd6744a8b9307eb3))
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.19.4-alpine to 1.20.2-alpine ([9463227](https://github.com/floatme-corp/golflog/commit/9463227bcba6d9914a5d04ef61972254ee62e3bf))
+* **docker:** bump golangci/golangci-lint ([9d0cb1a](https://github.com/floatme-corp/golflog/commit/9d0cb1a04f5e86a6e520b4ef19c93702715c20a6))
+* **docker:** bump golangci/golangci-lint ([6135d8b](https://github.com/floatme-corp/golflog/commit/6135d8b49cbae53d8409be14be3e79b180103155))
+* **go:** bump github.com/daixiang0/gci from 0.9.0 to 0.9.1 in /tools ([a6a072b](https://github.com/floatme-corp/golflog/commit/a6a072be3fe1b0707cc2fac41b12e18e40f9730e))
+* **go:** bump github.com/daixiang0/gci from 0.9.1 to 0.10.1 in /tools ([1684189](https://github.com/floatme-corp/golflog/commit/16841899ceece463069154eedb9fc38ae96a3e98))
+* **go:** bump github.com/spf13/viper from 1.14.0 to 1.15.0 ([86e3f2a](https://github.com/floatme-corp/golflog/commit/86e3f2a9c0ca9d3ec9b6e4b70b9c8df7ef38a571))
+* **go:** bump github.com/stretchr/testify from 1.8.1 to 1.8.2 ([9a93377](https://github.com/floatme-corp/golflog/commit/9a93377539bd6bd6e41ad91f9b8d8e4626c7c5a7))
+* **go:** bump golang.org/x/tools from 0.5.0 to 0.6.0 in /tools ([c91e6bb](https://github.com/floatme-corp/golflog/commit/c91e6bb8f7bd4a3a1e0df2cc9c3a00cd0b658d74))
+* **go:** bump golang.org/x/tools from 0.6.0 to 0.7.0 in /tools ([8bab748](https://github.com/floatme-corp/golflog/commit/8bab7482b067ab9a0ddce992bf95f05cbf52b100))
+* **go:** bump gotest.tools/gotestsum from 1.8.2 to 1.9.0 in /tools ([601f259](https://github.com/floatme-corp/golflog/commit/601f259a35339ac8a7f301830e3463ff3f3016f6))
+
 ## [1.5.7](https://github.com/floatme-corp/golflog/compare/v1.5.6...v1.5.7) (2023-01-09)
 
 
