@@ -1,6 +1,6 @@
 module github.com/floatme-corp/golflog/tools
 
-go 1.17
+go 1.20
 
 require (
 	github.com/daixiang0/gci v0.10.1
