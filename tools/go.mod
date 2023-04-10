@@ -6,7 +6,7 @@ require (
 	github.com/daixiang0/gci v0.10.1
 	github.com/mattn/goveralls v0.0.11
 	golang.org/x/tools v0.7.0
-	gotest.tools/gotestsum v1.9.0
+	gotest.tools/gotestsum v1.10.0
 	mvdan.cc/gofumpt v0.4.0
 )
 
