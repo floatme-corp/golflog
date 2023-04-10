@@ -5,8 +5,8 @@ go 1.20
 require (
 	github.com/daixiang0/gci v0.10.1
 	github.com/mattn/goveralls v0.0.11
-	golang.org/x/tools v0.7.0
 	gotest.tools/gotestsum v1.10.0
+	golang.org/x/tools v0.8.0
 	mvdan.cc/gofumpt v0.4.0
 )
 
@@ -25,9 +25,9 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	golang.org/x/mod v0.9.0 // indirect
+	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.6.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
 	golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
