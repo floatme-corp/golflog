@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.1](https://github.com/floatme-corp/golflog/compare/v1.6.0...v1.6.1) (2023-04-24)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.20.2-alpine to 1.20.3-alpine ([cb21ed7](https://github.com/floatme-corp/golflog/commit/cb21ed720f571e56b4851f7996df56ccb7b5acd1))
+* **docker:** bump vektra/mockery from v2.20.0 to v3.0 ([162dc7b](https://github.com/floatme-corp/golflog/commit/162dc7b99454282fd9cc36c1ed48416f07def251))
+* **go:** bump github.com/go-logr/logr from 1.2.3 to 1.2.4 ([7850ce7](https://github.com/floatme-corp/golflog/commit/7850ce74c177e9c8e67f43646df9468f129abc9c))
+* **go:** bump golang.org/x/tools from 0.7.0 to 0.8.0 in /tools ([dc6e807](https://github.com/floatme-corp/golflog/commit/dc6e8070927f35a0c9c0a60df67b8ed6a686485b))
+* **go:** bump gotest.tools/gotestsum from 1.9.0 to 1.10.0 in /tools ([c03370e](https://github.com/floatme-corp/golflog/commit/c03370eb67701ed80aac361c737a4de60b9fed24))
+* **go:** bump mvdan.cc/gofumpt from 0.4.0 to 0.5.0 in /tools ([2a9ff81](https://github.com/floatme-corp/golflog/commit/2a9ff817b983d46f02f7a5daf69693c3c291b15b))
+
 ## [1.6.0](https://github.com/floatme-corp/golflog/compare/v1.5.7...v1.6.0) (2023-03-28)
 
 
