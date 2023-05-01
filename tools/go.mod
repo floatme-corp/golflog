@@ -4,9 +4,9 @@ go 1.20
 
 require (
 	github.com/daixiang0/gci v0.10.1
-	github.com/mattn/goveralls v0.0.11
-	gotest.tools/gotestsum v1.10.0
+	github.com/mattn/goveralls v0.0.12
 	golang.org/x/tools v0.8.0
+	gotest.tools/gotestsum v1.10.0
 	mvdan.cc/gofumpt v0.5.0
 )
 
@@ -28,6 +28,6 @@ require (
 	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.7.0 // indirect
-	golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 // indirect
+	golang.org/x/term v0.7.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
