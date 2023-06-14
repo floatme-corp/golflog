@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.2](https://github.com/floatme-corp/golflog/compare/v1.6.1...v1.6.2) (2023-06-14)
+
+
+### Miscellaneous
+
+* **docker:** bump golang from 1.20.3-alpine to 1.20.5-alpine ([4eda990](https://github.com/floatme-corp/golflog/commit/4eda990b79221860d495107727b062b156298ff6))
+* **docker:** bump golangci/golangci-lint ([d21fa28](https://github.com/floatme-corp/golflog/commit/d21fa28d7ae2f1a9aba1eadddc80b429e73ba5b7))
+* **go:** bump github.com/go-logr/zapr from 1.2.3 to 1.2.4 ([3808f5c](https://github.com/floatme-corp/golflog/commit/3808f5c83a7183e3f0c5d4353912ee007271454b))
+* **go:** bump github.com/mattn/goveralls in /tools ([d6f2600](https://github.com/floatme-corp/golflog/commit/d6f2600dbd834ac880e3eed780aec163795eb9dd))
+* **go:** bump github.com/spf13/viper from 1.15.0 to 1.16.0 ([0d7fc2a](https://github.com/floatme-corp/golflog/commit/0d7fc2a16e85a8bc41a746fd23dedaae6a42bb4e))
+* **go:** bump github.com/stretchr/testify from 1.8.2 to 1.8.4 ([91d3f96](https://github.com/floatme-corp/golflog/commit/91d3f967fb314437f289fe135d1a72729bf0f07b))
+* **go:** bump golang.org/x/tools from 0.8.0 to 0.9.3 in /tools ([3a9e4a2](https://github.com/floatme-corp/golflog/commit/3a9e4a22825f55f974e413439b08bc3386987407))
+* **golangci-lint:** ignore depguard linter ([5badc6e](https://github.com/floatme-corp/golflog/commit/5badc6e7b6ae372916b5bc1e2044d006b9890def))
+
 ## [1.6.1](https://github.com/floatme-corp/golflog/compare/v1.6.0...v1.6.1) (2023-04-24)
 
 
