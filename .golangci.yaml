@@ -10,6 +10,7 @@ linters:
     - paralleltest
     - scopelint
     - testpackage
+    - depguard
 
 linters-settings:
   funlen:
