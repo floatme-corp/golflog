@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.3](https://github.com/floatme-corp/golflog/compare/v1.6.2...v1.6.3) (2023-07-11)
+
+
+### Bug Fixes
+
+* **codeball:** codeball deprecated, removing ([5db5b29](https://github.com/floatme-corp/golflog/commit/5db5b2935020a780d868ffb35e255f953d0db91d))
+
+
+### Miscellaneous
+
+* **docker:** bump golangci/golangci-lint ([65fa387](https://github.com/floatme-corp/golflog/commit/65fa3879d80b5c35c4b3f144818c3902bed0427d))
+* **go:** bump golang.org/x/tools from 0.9.3 to 0.11.0 in /tools ([a28a103](https://github.com/floatme-corp/golflog/commit/a28a10330b6feedb0f9a328c07267aa90b18ad90))
+* **go:** bump gotest.tools/gotestsum from 1.10.0 to 1.10.1 in /tools ([c6ca93e](https://github.com/floatme-corp/golflog/commit/c6ca93e0beadddb89c0d0f0bc3c9073f8d25766d))
+
 ## [1.6.2](https://github.com/floatme-corp/golflog/compare/v1.6.1...v1.6.2) (2023-06-14)
 
 
