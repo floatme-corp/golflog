@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/daixiang0/gci v0.10.1
 	github.com/mattn/goveralls v0.0.12
-	golang.org/x/tools v0.11.0
+	golang.org/x/tools v0.11.1
 	gotest.tools/gotestsum v1.10.1
 	mvdan.cc/gofumpt v0.5.0
 )
