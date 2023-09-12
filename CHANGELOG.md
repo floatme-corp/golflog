@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.4](https://github.com/floatme-corp/golflog/compare/v1.6.3...v1.6.4) (2023-09-12)
+
+
+### Miscellaneous
+
+* **docker:** bump golangci/golangci-lint ([b2e6f16](https://github.com/floatme-corp/golflog/commit/b2e6f16f8222fb9955eed96578d05371191c02d6))
+* **github:** bump actions/checkout from 3 to 4 ([cb27a5b](https://github.com/floatme-corp/golflog/commit/cb27a5bee8fefb334322a035af07d68e77568e7d))
+* **go:** bump github.com/daixiang0/gci from 0.10.1 to 0.11.1 in /tools ([3b254f4](https://github.com/floatme-corp/golflog/commit/3b254f4af19c2648e90ae5b943d29c4e3d96e8c6))
+* **go:** bump go.uber.org/zap from 1.24.0 to 1.25.0 ([b198562](https://github.com/floatme-corp/golflog/commit/b198562ecbe228069c10e6a855ac08fa769d5658))
+* **go:** bump golang.org/x/tools from 0.11.0 to 0.13.0 in /tools ([0765325](https://github.com/floatme-corp/golflog/commit/0765325a0062d05319cef7bd0134695043c2dd8c))
+
 ## [1.6.3](https://github.com/floatme-corp/golflog/compare/v1.6.2...v1.6.3) (2023-07-11)
 
 
