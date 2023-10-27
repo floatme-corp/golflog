@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.5](https://github.com/floatme-corp/golflog/compare/v1.6.4...v1.6.5) (2023-10-27)
+
+
+### Miscellaneous
+
+* **go:** bump github.com/spf13/viper from 1.16.0 to 1.17.0 ([4abd064](https://github.com/floatme-corp/golflog/commit/4abd064c3c6cc1d1427972a1875d1970e5d0a124))
+* **go:** bump golang.org/x/tools from 0.13.0 to 0.14.0 in /tools ([ab5423c](https://github.com/floatme-corp/golflog/commit/ab5423c46412f581463412111166ce689018a39b))
+
 ## [1.6.4](https://github.com/floatme-corp/golflog/compare/v1.6.3...v1.6.4) (2023-09-12)
 
 
