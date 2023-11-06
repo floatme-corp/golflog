@@ -15,7 +15,7 @@
 
 # NOTE(jkoelker) Get as many dependancies from official docker images to allow
 #                `dependabot` to bump them
-FROM docker.io/golangci/golangci-lint:v1.54.2-alpine as golangci-lint
+FROM docker.io/golangci/golangci-lint:v1.55.2-alpine as golangci-lint
 FROM docker.io/hadolint/hadolint:2.12.0-alpine as hadolint
 FROM docker.io/vektra/mockery:v2.20.0 as mockery
 
