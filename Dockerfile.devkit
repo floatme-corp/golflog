@@ -30,7 +30,7 @@ WORKDIR /go/src/github.com/floatme-corp/golflog
 # NOTE(jkoelker) We want word splitting for the output of `go list`
 # hadolint ignore=SC2046
 RUN mkdir -p /tools \
-    && go install -v $(go list -f '{{ join .Imports " " }}' -tags=tools)
+    && go install -v $(go list -e -f '{{ join .Imports " " }}' -tags=tools)
 
 # NOTE(jkoelker) From here we care about layers
 FROM docker.io/golang:1.21.4-alpine
