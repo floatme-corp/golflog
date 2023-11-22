@@ -30,36 +30,33 @@ type NewLoggerFromEnvSuite struct {
 
 func (suite *NewLoggerFromEnvSuite) TestDefault() {
 	log, err := golflog.NewLoggerFromEnv("test")
-	if suite.NoError(err) {
-		suite.NotNil(log)
-	}
+
+	suite.Require().NoError(err)
+	suite.Require().NotNil(log)
 }
 
 func (suite *NewLoggerFromEnvSuite) TestDevelopment() {
 	viper.Set(golflog.LogProduction, false)
 
 	log, err := golflog.NewLoggerFromEnv("test")
-	if suite.NoError(err) {
-		suite.NotNil(log)
-	}
+	suite.Require().NoError(err)
+	suite.Require().NotNil(log)
 }
 
 func (suite *NewLoggerFromEnvSuite) TestProduction() {
 	viper.Set(golflog.LogProduction, true)
 
 	log, err := golflog.NewLoggerFromEnv("test")
-	if suite.NoError(err) {
-		suite.NotNil(log)
-	}
+	suite.Require().NoError(err)
+	suite.Require().NotNil(log)
 }
 
 func (suite *NewLoggerFromEnvSuite) TestUnknownImplementation() {
 	viper.Set(golflog.LogImplementation, "test")
 
 	_, err := golflog.NewLoggerFromEnv("test")
-	if suite.Error(err) {
-		suite.ErrorIs(err, golflog.ErrUnknownImplementation)
-	}
+	suite.Require().Error(err)
+	suite.Require().ErrorIs(err, golflog.ErrUnknownImplementation)
 }
 
 func TestNewLoggerFromEnv(t *testing.T) {
