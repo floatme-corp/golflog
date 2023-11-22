@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.7.0](https://github.com/floatme-corp/golflog/compare/v1.6.5...v1.7.0) (2023-11-22)
+
+
+### Features
+
+* **dependabot:** fix dependabot detection and add special commit lint ([db37c71](https://github.com/floatme-corp/golflog/commit/db37c71cc5b6f141ffecbed9ac446945959381a6))
+* **testify:** fix required error syntax to be idiomatic ([d6a2df2](https://github.com/floatme-corp/golflog/commit/d6a2df23fc11f297079c6a4c9111a4d4cb77ac9b))
+
+
+### Bug Fixes
+
+* **docker:** add `-e` to go list ([e48e916](https://github.com/floatme-corp/golflog/commit/e48e91643e7d64f032193a0370a3494ca73ce7f3))
+
+
+### Miscellaneous
+
+* **deps:** use dependabot groups ([9d95a45](https://github.com/floatme-corp/golflog/commit/9d95a458094e6d961d969cc0e16bc99ac0d28b53))
+* **docker:** bump golang from 1.20.5-alpine to 1.21.4-alpine ([8b10da0](https://github.com/floatme-corp/golflog/commit/8b10da04fe9be0cc9592447f97a60a4abf43c068))
+* **docker:** bump golangci/golangci-lint ([6f34d5d](https://github.com/floatme-corp/golflog/commit/6f34d5da84d3c94a30b510e8a2950f3168881d1f))
+* **go:** bump the go group with 2 updates ([b6238f7](https://github.com/floatme-corp/golflog/commit/b6238f7276dc3620e3a91688aac01cce824b2954))
+* **go:** bump the gotools group in /tools with 1 update ([e4e6145](https://github.com/floatme-corp/golflog/commit/e4e614533e69c1613f43ada64b38cba69191d66b))
+
 ## [1.6.5](https://github.com/floatme-corp/golflog/compare/v1.6.4...v1.6.5) (2023-10-27)
 
 
