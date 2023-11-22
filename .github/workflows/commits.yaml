@@ -19,9 +19,32 @@ jobs:
         run: |
           npm install @commitlint/config-conventional @commitlint/cli
 
+      - name: Check for Dependabot
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+          DEPENDABOTS=$(
+            git log \
+              --oneline \
+              --author="dependabot\[bot\]*" \
+              --ancestry-path \
+              "${BASE}..${HEAD}" |
+            wc -l
+          )
+          echo "FM_DEPENDABOTS=${DEPENDABOTS}" >> $GITHUB_ENV
+
+      - if: ${{ env.FM_DEPENDABOTS > 0 }}
+        name: Set Dependabot Config
+        run: echo 'COMMITLINT_RC=.commitlintrc.dependabot.js' >> $GITHUB_ENV
+
+      - if: ${{ env.FM_DEPENDABOTS < 1 }}
+        name: Set Config
+        run: echo 'COMMITLINT_RC=.commitlintrc.js' >> $GITHUB_ENV
+
       - name: Conventional commit check
         run: |
           npx commitlint \
+            --config '${{ env.COMMITLINT_RC }}' \
             --from ${{ github.event.pull_request.base.sha }} \
             --to ${{ github.event.pull_request.head.sha }}
 
