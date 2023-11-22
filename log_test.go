@@ -74,11 +74,10 @@ func (suite *NewLoggerSuite) TestVerbosityMaxClamping() {
 	suite.configurator.On("Build").Return(logger, nil)
 
 	log, err := golflog.NewLogger(suite.configurator, "test", golflog.MaxLevel+1)
-	if suite.NoError(err) {
-		suite.NotNil(log)
-		log.Info("test")
-		suite.Equal(`test"level"=0 "msg"="test"`, buf.String())
-	}
+	suite.Require().NoError(err)
+	suite.NotNil(log)
+	log.Info("test")
+	suite.Equal(`test"level"=0 "msg"="test"`, buf.String())
 }
 
 func (suite *NewLoggerSuite) TestVerbosityMinClamping() {
@@ -96,11 +95,10 @@ func (suite *NewLoggerSuite) TestVerbosityMinClamping() {
 	suite.configurator.On("Build").Return(logger, nil)
 
 	log, err := golflog.NewLogger(suite.configurator, "test", golflog.MinLevel-1)
-	if suite.NoError(err) {
-		suite.NotNil(log)
-		log.Info("test")
-		suite.Equal(`test"level"=0 "msg"="test"`, buf.String())
-	}
+	suite.Require().NoError(err)
+	suite.NotNil(log)
+	log.Info("test")
+	suite.Equal(`test"level"=0 "msg"="test"`, buf.String())
 }
 
 func (suite *NewLoggerSuite) TestVerbosityError() {
@@ -109,7 +107,7 @@ func (suite *NewLoggerSuite) TestVerbosityError() {
 	suite.configurator.On("Verbosity", mock.AnythingOfType("int")).Return(mockErr).Once()
 
 	_, err := golflog.NewLogger(suite.configurator, "test", 0)
-	suite.Error(err)
+	suite.Require().Error(err)
 }
 
 func (suite *NewLoggerSuite) TestBuildError() {
@@ -119,9 +117,8 @@ func (suite *NewLoggerSuite) TestBuildError() {
 	suite.configurator.On("Build").Return(logr.Logger{}, mockErr)
 
 	_, err := golflog.NewLogger(suite.configurator, "test", 0)
-	if suite.Error(err) {
-		suite.ErrorIs(err, mockErr)
-	}
+	suite.Require().Error(err)
+	suite.Require().ErrorIs(err, mockErr)
 }
 
 func TestNewLogger(t *testing.T) {
@@ -151,9 +148,8 @@ func (suite *NewLoggerWithBuildInfoSuite) TestNewLoggerError() {
 	suite.configurator.On("Verbosity", mock.AnythingOfType("int")).Return(mockErr).Once()
 
 	_, err := golflog.NewLoggerWithBuildInfo(suite.configurator, nil, "test", 0)
-	if suite.Error(err) {
-		suite.ErrorIs(err, mockErr)
-	}
+	suite.Require().Error(err)
+	suite.Require().ErrorIs(err, mockErr)
 }
 
 func (suite *NewLoggerWithBuildInfoSuite) TestBuildInfo() {
@@ -167,18 +163,17 @@ func (suite *NewLoggerWithBuildInfoSuite) TestBuildInfo() {
 	suite.buildInfo.On("Time").Return("time")
 
 	log, err := golflog.NewLoggerWithBuildInfo(suite.configurator, suite.buildInfo, "test", 0)
-	if suite.NoError(err) {
-		suite.NotNil(log)
-		log.Info("test")
-		suite.Equal(
-			`test"level"=0 "msg"="test"`+
-				` "build_version"="version"`+
-				` "build_commit"="commit"`+
-				` "build_date"="date"`+
-				` "build_time"="time"`,
-			buf.String(),
-		)
-	}
+	suite.Require().NoError(err)
+	suite.NotNil(log)
+	log.Info("test")
+	suite.Equal(
+		`test"level"=0 "msg"="test"`+
+			` "build_version"="version"`+
+			` "build_commit"="commit"`+
+			` "build_date"="date"`+
+			` "build_time"="time"`,
+		buf.String(),
+	)
 }
 
 func TestNewLoggerWithBuildInfo(t *testing.T) {
@@ -207,7 +202,7 @@ func (suite *WrapSuite) TestWrap() {
 	err := golflog.Wrap(ctx, errors.New("test"), "message", "key", "value")
 
 	suite.Equal(`"msg"="message" "error"="test" "severity"="error" "key"="value"`, buf.String())
-	suite.ErrorContains(err, "message: test")
+	suite.Require().ErrorContains(err, "message: test")
 }
 
 func (suite *WrapSuite) TestWarnWrap() {
@@ -218,7 +213,7 @@ func (suite *WrapSuite) TestWarnWrap() {
 	err := golflog.WarnWrap(ctx, errors.New("test"), "message", "key", "value")
 
 	suite.Equal(`"level"=0 "msg"="message" "severity"="warning" "key"="value"`, buf.String())
-	suite.ErrorContains(err, "message: test")
+	suite.Require().ErrorContains(err, "message: test")
 }
 
 func TestWrap(t *testing.T) {
