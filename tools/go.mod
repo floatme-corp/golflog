@@ -3,9 +3,9 @@ module github.com/floatme-corp/golflog/tools
 go 1.20
 
 require (
-	github.com/daixiang0/gci v0.11.2
+	github.com/daixiang0/gci v0.12.0
 	github.com/mattn/goveralls v0.0.12
-	golang.org/x/tools v0.15.0
+	golang.org/x/tools v0.16.1
 	gotest.tools/gotestsum v1.11.0
 	mvdan.cc/gofumpt v0.5.0
 )
