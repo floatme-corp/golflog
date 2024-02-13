@@ -12,23 +12,4 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         with:
           release-type: go
-          package-name: golflog
           token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
-          changelog-types: >-
-            [
-              {
-                "type": "feat",
-                "section": "Features",
-                "hidden": false
-              },
-              {
-                "type": "fix",
-                "section": "Bug Fixes",
-                "hidden": false
-              },
-              {
-                "type": "chore",
-                "section": "Miscellaneous",
-                "hidden": false
-              }
-            ]
