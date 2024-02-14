@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/floatme-corp/golflog/compare/v1.7.0...v1.7.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* **release:** fix release for new v4 release please config ([ce15232](https://github.com/floatme-corp/golflog/commit/ce15232314908be6d64cf108777d882bc5fd957e))
+
 ## [1.7.0](https://github.com/floatme-corp/golflog/compare/v1.6.5...v1.7.0) (2023-11-22)
 
 
