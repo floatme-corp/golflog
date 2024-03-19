@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.3](https://github.com/floatme-corp/golflog/compare/v1.7.2...v1.7.3) (2024-03-19)
+
+
+### Bug Fixes
+
+* **release:** update config to use the correct value for root ([c91fd44](https://github.com/floatme-corp/golflog/commit/c91fd440987aafc6a67ca7c4cb5bdc99f4784442))
+
 ## [1.7.2](https://github.com/floatme-corp/golflog/compare/v1.7.1...v1.7.2) (2024-03-19)
 
 
