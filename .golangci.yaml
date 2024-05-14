@@ -11,6 +11,7 @@ linters:
     - scopelint
     - testpackage
     - depguard
+    - err113
 
 linters-settings:
   funlen:
