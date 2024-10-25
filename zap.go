@@ -17,6 +17,7 @@ package golflog
 
 import (
 	"fmt"
+	"math"
 
 	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
@@ -52,6 +53,10 @@ func (config *ZapConfigurator) Build() (logr.Logger, error) {
 
 // Verbosity sets the desirect log verbosity in the `zap` config.
 func (config *ZapConfigurator) Verbosity(verbosity int) error {
+	if verbosity < math.MinInt8 || verbosity > math.MaxInt8 {
+		return fmt.Errorf("value %d out of range for int8", verbosity)
+	}
+
 	config.Zap.Level = zap.NewAtomicLevelAt(zapcore.Level(verbosity) * -1)
 
 	return nil
