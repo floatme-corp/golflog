@@ -15,11 +15,11 @@
 
 # NOTE(jkoelker) Get as many dependancies from official docker images to allow
 #                `dependabot` to bump them
-FROM docker.io/golangci/golangci-lint:v1.61.0-alpine as golangci-lint
+FROM docker.io/golangci/golangci-lint:v1.64.6-alpine as golangci-lint
 FROM docker.io/hadolint/hadolint:2.12.0-alpine as hadolint
-FROM docker.io/vektra/mockery:v2.20.0 as mockery
+FROM docker.io/vektra/mockery:v2.53.2 as mockery
 
-FROM docker.io/golang:1.23.2-alpine as builder
+FROM docker.io/golang:1.24.1-alpine as builder
 
 # NOTE(jkoelker) install the tools in the builder here to improve layer
 #                caching of the published devkit.
@@ -33,16 +33,18 @@ RUN mkdir -p /tools \
     && go install -v $(go list -e -f '{{ join .Imports " " }}' -tags=tools)
 
 # NOTE(jkoelker) From here we care about layers
-FROM docker.io/golang:1.23.2-alpine
+FROM docker.io/golang:1.24.1-alpine
 
+# NOTE(Kramer): Set the PATH for bash because alpine is setup for sh.
 # NOTE(jkoelker) Ignore "Pin versions in apk add"
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
-        bash \
-        gcc \
-        git \
-        libc-dev \
-        make
+    bash \
+    gcc \
+    git \
+    libc-dev \
+    make && \
+    echo "export PATH=/usr/local/go/bin:$PATH" >> /etc/profile
 
 COPY --from=hadolint /bin/hadolint /usr/local/bin/
 COPY --from=golangci-lint /usr/bin/golangci-lint /usr/local/bin/

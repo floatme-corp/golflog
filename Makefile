@@ -79,7 +79,7 @@ clean-coverage:
 
 .PHONY: clean-mocks
 clean-mocks:
-	rm -r mocks/build_info.go mocks/configurator.go
+	find mocks/ -type f -name '*.go' \! -name 'stub.go' -exec rm -f {} +
 
 coverage.out: $(shell find $(REPO_ROOT_DIR) -type f -name '*'.go)
 coverage.out: generate.host
@@ -139,14 +139,8 @@ generate: devkit.run
 generate.host: generate.host-mocks
 
 .PHONY: generate.host-mocks
-generate.host-mocks: mocks/configurator.go
-generate.host-mocks: mocks/build_info.go
-
-mocks/configurator.go: log.go
-	go generate log.go
-
-mocks/build_info.go: log.go
-	go generate log.go
+generate.host-mocks:
+	mockery
 
 .PHONY: test
 test: WHAT=make test.host

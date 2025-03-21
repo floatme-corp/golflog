@@ -2,16 +2,12 @@
 linters:
   enable-all: true
   disable:
-    - exhaustivestruct
     - exhaustruct
-    - golint
-    - interfacer
-    - maligned
     - paralleltest
-    - scopelint
     - testpackage
     - depguard
     - err113
+    - tenv # deprecated (since v1.64.0) due to: Duplicate feature in another linter. Replaced by usetesting.
 
 linters-settings:
   funlen:
