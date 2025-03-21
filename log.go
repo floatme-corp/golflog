@@ -13,9 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:generate mockery --name Configurator --case underscore
-//go:generate mockery --name BuildInfo --case underscore
-
 package golflog
 
 import (
