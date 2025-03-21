@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/floatme-corp/golflog/compare/v1.7.3...v1.8.0) (2025-03-21)
+
+
+### Features
+
+* **go:** update mockgen and go tools ([2329921](https://github.com/floatme-corp/golflog/commit/2329921b2ffecf3488c8b1c48ec2d107d6ea10b4))
+
 ## [1.7.3](https://github.com/floatme-corp/golflog/compare/v1.7.2...v1.7.3) (2024-03-19)
 
 
