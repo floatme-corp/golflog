@@ -7,9 +7,9 @@ toolchain go1.24.1
 require (
 	github.com/daixiang0/gci v0.13.6
 	github.com/mattn/goveralls v0.0.12
-	golang.org/x/tools v0.31.0
+	golang.org/x/tools v0.32.0
 	gotest.tools/gotestsum v1.12.1
-	mvdan.cc/gofumpt v0.7.0
+	mvdan.cc/gofumpt v0.8.0
 )
 
 require (
@@ -29,8 +29,8 @@ require (
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/mod v0.24.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/sync v0.13.0 // indirect
+	golang.org/x/sys v0.32.0 // indirect
 	golang.org/x/term v0.29.0 // indirect
 	golang.org/x/text v0.17.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
