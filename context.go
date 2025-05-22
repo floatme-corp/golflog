@@ -57,6 +57,7 @@ func AlwaysFromContext(ctx context.Context) logr.Logger {
 
 	fallback := funcr.New(
 		func(prefix, args string) {
+			//nolint:errcheck // if fallback fails everything is broken.
 			fmt.Fprintln(DefaultFallbackOutput, prefix, args)
 		},
 		funcr.Options{

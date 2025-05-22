@@ -1,57 +1,71 @@
 ---
+version: "2"
 linters:
-  enable-all: true
+  default: all
   disable:
     - exhaustruct
     - paralleltest
     - testpackage
     - depguard
     - err113
-    - tenv # deprecated (since v1.64.0) due to: Duplicate feature in another linter. Replaced by usetesting.
+    - revive
 
-linters-settings:
-  funlen:
-    lines: 100
-    statements: 50
+  settings:
+    funlen:
+      lines: 100
+      statements: 50
 
-  gci:
-    sections:
-      - standard
-      - default
-      - prefix(github.com/floatme-corp/golflog)
+    tagliatelle:
+      case:
+        rules:
+          json: snake
 
-  goimports:
-    # put imports beginning with prefix after 3rd-party packages;
-    # it's a comma-separated list of prefixes
-    local-prefixes: github.com/floatme-corp/golflog
+    wrapcheck:
+      ignore-sigs:
+        - .Errorf(
+        - errors.New(
+        - errors.Unwrap(
+        - .Wrap(
+        - .Wrapf(
+        - .WithMessage(
+        - .WithMessagef(
+        - .WithStack(
+        - .LogWrap(
 
-  tagliatelle:
-    case:
-      rules:
-        json: snake
-
-  wrapcheck:
-    ignoreSigs:
-      - .Errorf(
-      - errors.New(
-      - errors.Unwrap(
-      - .Wrap(
-      - .Wrapf(
-      - .WithMessage(
-      - .WithMessagef(
-      - .WithStack(
-      - .LogWrap(
+  exclusions:
+    generated: lax
+    rules:
+      # Exclude lll issues for long lines with go:generate
+      - linters:
+          - lll
+        source: "^//go:generate "
+      - linters:
+          - dupl
+          - goerr113
+        path: _test\.go
 
 issues:
-  exclude-rules:
-    # Exclude lll issues for long lines with go:generate
-    - linters:
-        - lll
-      source: "^//go:generate "
-    - linters:
-        - dupl
-        - goerr113
-      path: _test\.go
-
   max-issues-per-linter: 0
   max-same-issues: 0
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/floatme-corp/golflog)
+    goimports:
+      local-prefixes:
+        - github.com/floatme-corp/golflog
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
