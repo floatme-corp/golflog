@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.0](https://github.com/floatme-corp/golflog/compare/v1.8.0...v1.9.0) (2025-05-22)
+
+
+### Features
+
+* **golangci:** update to v2 ([e75f6aa](https://github.com/floatme-corp/golflog/commit/e75f6aabe15fce7c738e4c8ae4f486c5726bd662))
+* **mockery:** update mockery config to v3 ([e9fadc8](https://github.com/floatme-corp/golflog/commit/e9fadc86652ea48af42be0cd0a6ae6a9f10f38c6))
+
 ## [1.8.0](https://github.com/floatme-corp/golflog/compare/v1.7.3...v1.8.0) (2025-03-21)
 
 
