@@ -1,14 +1,11 @@
 ---
-issue-845-fix: true
-resolve-type-alias: false
-with-expecter: true
-disable-version-string: true
-filename: "{{.InterfaceName}}.go"
 dir: "{{.InterfaceDir}}/mocks"
-mockname: "{{.InterfaceName}}"
-outpkg: "mocks"
+structname: "{{.InterfaceName}}"
+pkgname: mocks
+filename: mocks.go
+template: testify
 packages:
   github.com/floatme-corp/golflog:
     interfaces:
-      Configurator:
-      BuildInfo:
+      Configurator: {}
+      BuildInfo: {}
