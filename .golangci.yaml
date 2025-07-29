@@ -9,6 +9,7 @@ linters:
     - depguard
     - err113
     - revive
+    - noinlineerr
 
   settings:
     funlen:
