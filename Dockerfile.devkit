@@ -15,8 +15,8 @@
 
 # NOTE(jkoelker) Get as many dependancies from official docker images to allow
 #                `dependabot` to bump them
-FROM docker.io/golangci/golangci-lint:v2.3.0-alpine as golangci-lint
-FROM docker.io/hadolint/hadolint:2.12.0-alpine as hadolint
+FROM docker.io/golangci/golangci-lint:v2.6.2-alpine as golangci-lint
+FROM docker.io/hadolint/hadolint:v2.14.0-alpine as hadolint
 FROM docker.io/vektra/mockery:v3.6.0 as mockery
 
 FROM docker.io/golang:1.25.4-alpine as builder
@@ -28,7 +28,7 @@ COPY tools /go/src/github.com/floatme-corp/golflog/
 WORKDIR /go/src/github.com/floatme-corp/golflog
 
 # NOTE(jkoelker) We want word splitting for the output of `go list`
-# hadolint ignore=SC2046
+# hadolint ignore=SC2046,DL3062
 RUN mkdir -p /tools \
     && go install -v $(go list -e -f '{{ join .Imports " " }}' -tags=tools)
 
