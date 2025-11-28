@@ -1,5 +1,5 @@
 ---
-version: "2"
+version: '2'
 linters:
   default: all
   disable:
@@ -10,6 +10,7 @@ linters:
     - err113
     - revive
     - noinlineerr
+    - wsl
 
   settings:
     funlen:
@@ -32,6 +33,10 @@ linters:
         - .WithMessagef(
         - .WithStack(
         - .LogWrap(
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
 
   exclusions:
     generated: lax
@@ -39,7 +44,7 @@ linters:
       # Exclude lll issues for long lines with go:generate
       - linters:
           - lll
-        source: "^//go:generate "
+        source: '^//go:generate '
       - linters:
           - dupl
           - goerr113

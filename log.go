@@ -77,7 +77,7 @@ func NewLogger(
 	return log.WithName(rootName), nil
 }
 
-// NewLogger sets the log verbosity, configures a new logger from `configurator`, and sets the
+// NewLoggerWithBuildInfo sets the log verbosity, configures a new logger from `configurator`, and sets the
 // initial name of the logger. If `buildInfo` is not `nil`, non-empty values from the interface
 // will be set as values on the resulting `logr.Logger`.
 func NewLoggerWithBuildInfo(
@@ -121,7 +121,7 @@ func Wrap(
 	ctx context.Context,
 	err error,
 	message string,
-	keysAndValues ...interface{},
+	keysAndValues ...any,
 ) error {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
@@ -138,12 +138,12 @@ func WarnWrap(
 	ctx context.Context,
 	err error,
 	message string,
-	keysAndValues ...interface{},
+	keysAndValues ...any,
 ) error {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
-	logger.Info(message, append([]interface{}{"severity", "warning"}, keysAndValues...)...)
+	logger.Info(message, append([]any{"severity", "warning"}, keysAndValues...)...)
 
 	return fmt.Errorf("%s: %w", message, err)
 }
@@ -153,14 +153,14 @@ func WarnWrap(
 func Info(
 	ctx context.Context,
 	message string,
-	keysAndValues ...interface{},
+	keysAndValues ...any,
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Info(message, append([]interface{}{"severity", "info"}, keysAndValues...)...)
+	logger.Info(message, append([]any{"severity", "info"}, keysAndValues...)...)
 }
 
 // Error gets a logger from the given context and logs the error and message and optional values
@@ -169,14 +169,14 @@ func Error(
 	ctx context.Context,
 	err error,
 	message string,
-	keysAndValues ...interface{},
+	keysAndValues ...any,
 ) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Error(err, message, append([]interface{}{"severity", "error"}, keysAndValues...)...)
+	logger.Error(err, message, append([]any{"severity", "error"}, keysAndValues...)...)
 }
 
 // V gets a logger from the given context for the level specified.
@@ -191,17 +191,17 @@ func V(ctx context.Context, level int) logr.Logger {
 
 // Warn gets a logger from the given context and logs the message with `severity=warning`
 // prepended into the passed key/value.
-func Warn(ctx context.Context, message string, keysAndValues ...interface{}) {
+func Warn(ctx context.Context, message string, keysAndValues ...any) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Info(message, append([]interface{}{"severity", "warning"}, keysAndValues...)...)
+	logger.Info(message, append([]any{"severity", "warning"}, keysAndValues...)...)
 }
 
 // Warning is an alias of the `Warn` function.
-func Warning(ctx context.Context, message string, keysAndValues ...interface{}) {
+func Warning(ctx context.Context, message string, keysAndValues ...any) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
@@ -211,13 +211,13 @@ func Warning(ctx context.Context, message string, keysAndValues ...interface{}) 
 
 // Debug get a logger from the given context at one level higher than the current level and log
 // the message. Prepends `severity=debug` to the passed key/value.
-func Debug(ctx context.Context, message string, keysAndValues ...interface{}) {
+func Debug(ctx context.Context, message string, keysAndValues ...any) {
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.V(1).Info(message, append([]interface{}{"severity", "debug"}, keysAndValues...)...)
+	logger.V(1).Info(message, append([]any{"severity", "debug"}, keysAndValues...)...)
 }
 
 // Discard returns a Logger that discards all messages logged to it.  It can be
