@@ -52,11 +52,7 @@ type NewLoggerSuite struct {
 }
 
 func (suite *NewLoggerSuite) SetupTest() {
-	suite.configurator = &mocks.Configurator{}
-}
-
-func (suite *NewLoggerSuite) TearDownTest() {
-	suite.configurator.AssertExpectations(suite.T())
+	suite.configurator = mocks.NewConfigurator(suite.T())
 }
 
 func (suite *NewLoggerSuite) TestVerbosityMaxClamping() {
