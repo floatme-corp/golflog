@@ -17,7 +17,7 @@
 #                `dependabot` to bump them
 FROM docker.io/golangci/golangci-lint:v2.10.1-alpine as golangci-lint
 FROM docker.io/hadolint/hadolint:v2.14.0-alpine as hadolint
-FROM docker.io/vektra/mockery:v3.6.0 as mockery
+FROM docker.io/vektra/mockery:v3.7.0 as mockery
 
 FROM docker.io/golang:1.26.0-alpine as builder
 
