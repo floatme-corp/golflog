@@ -1,0 +1,130 @@
+---
+name: Pull Request
+
+# Everything a pull request gets: lint, unit tests with coverage, and commit
+# checks. Job names match the required status checks on main.
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+# A run for a commit the PR no longer points at is wasted, and GitHub
+# sometimes delivers one push as two identical runs that race each other.
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # NOTE(jkoelker) Setup buildx for Github Actions cache support.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      # NOTE(jkoelker) Github Actions Cache requires the actions env vars
+      #                which are not exposed to "run" steps by default.
+      - name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v4
+
+      - name: Lint codebase
+        run: make lint
+
+  test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # NOTE(jkoelker) Setup buildx for Github Actions cache support.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      # NOTE(jkoelker) Github Actions Cache requires the actions env vars
+      #                which are not exposed to "run" steps by default.
+      - name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v4
+
+      - name: Test
+        run: make devkit.run
+        env:
+          WHAT: make coverage.out
+
+      - name: Send Coveralls Coverage
+        run: make devkit.run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WHAT: make goveralls
+
+  commit-checks:
+    name: commit-checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install conventional-commit linter
+        run: |
+          npm install @commitlint/config-conventional @commitlint/cli
+
+      - name: Check for Dependabot
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+          DEPENDABOTS=$(
+            git log \
+              --oneline \
+              --author="dependabot\[bot\]*" \
+              --ancestry-path \
+              "${BASE}..${HEAD}" |
+            wc -l
+          )
+
+          echo "FM_DEPENDABOTS=${DEPENDABOTS}" >> "$GITHUB_ENV"
+
+      - if: ${{ env.FM_DEPENDABOTS > 0 }}
+        name: Set Dependabot Config
+        run: echo 'COMMITLINT_RC=.commitlintrc.dependabot.js' >> "$GITHUB_ENV"
+
+      - if: ${{ env.FM_DEPENDABOTS < 1 }}
+        name: Set Config
+        run: echo 'COMMITLINT_RC=.commitlintrc.js' >> "$GITHUB_ENV"
+
+      - name: Conventional commit check
+        run: |
+          npx commitlint \
+            --config '${{ env.COMMITLINT_RC }}' \
+            --from ${{ github.event.pull_request.base.sha }} \
+            --to ${{ github.event.pull_request.head.sha }}
+
+      - name: No merge commits
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+          MERGE=$(git log --merges --ancestry-path "${BASE}..${HEAD}")
+          # The merge list should be empty
+          [[ -n "${MERGE}" ]] && {
+            echo "PR contains merge commits:";
+            echo "${MERGE}";
+            exit 1;
+          }
+          exit 0;

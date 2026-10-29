@@ -1,38 +1,47 @@
 ---
 version: 2
+
 updates:
-  - package-ecosystem: github-actions
-    directory: /
+  - package-ecosystem: "gomod"
+    directory: "/"
     schedule:
-      interval: weekly
+      interval: "weekly"
     commit-message:
-      prefix: chore(github)
-
-  - package-ecosystem: docker
-    directory: /
-    schedule:
-      interval: weekly
-    commit-message:
-      prefix: chore(docker)
-
-  - package-ecosystem: gomod
-    directory: /
-    schedule:
-      interval: weekly
-    commit-message:
-      prefix: chore(go)
+      prefix: "chore(go)"
     groups:
       go:
         patterns:
           - "*"
 
-  - package-ecosystem: gomod
-    directory: /tools
+  - package-ecosystem: "gomod"
+    directory: "/tools"
     schedule:
-      interval: weekly
+      interval: "weekly"
     commit-message:
-      prefix: chore(go)
+      prefix: "chore(go)"
     groups:
       gotools:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(github)"
+    groups:
+      github_actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(docker)"
+    groups:
+      docker:
         patterns:
           - "*"
