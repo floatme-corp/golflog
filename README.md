@@ -239,5 +239,5 @@ Released under the [Apache 2.0 License].
 [Apache 2.0 License]: LICENSE
 [doc-img]: https://pkg.go.dev/badge/github.com/floatme-corp/golflog
 [doc]: https://pkg.go.dev/github.com/floatme-corp/golflog
-[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml/badge.svg
-[ci]: https://github.com/floatme-corp/golflog/actions/workflows/test.yaml
+[ci-img]: https://github.com/floatme-corp/golflog/actions/workflows/on_pr.yaml/badge.svg
+[ci]: https://github.com/floatme-corp/golflog/actions/workflows/on_pr.yaml

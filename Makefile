@@ -41,9 +41,10 @@ ifneq ($(shell command -v docker),)
     endif
 endif
 
-$(DOCKER_DEVKIT_PHONY_FILE): $(shell find $(REPO_ROOT_DIR)/tools -type f -name '*'.go)
+$(DOCKER_DEVKIT_PHONY_FILE): tools/go.mod tools/go.sum
 $(DOCKER_DEVKIT_PHONY_FILE): Dockerfile.devkit
 	docker buildx build \
+		$(if $(shell docker --version | grep -v podman),--output=type=docker) \
 		$(DOCKER_DEVKIT_BUILDX_ARGS) \
 		--file $(REPO_ROOT_DIR)/Dockerfile.devkit \
 		--tag "$(DOCKER_DEVKIT_IMG)" \

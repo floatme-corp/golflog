@@ -1,0 +1,24 @@
+---
+name: Push to main
+
+# Opens or refreshes the release PR; when that PR merges, tags the commit and
+# creates the release.
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  release-please:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5
+        with:
+          release-type: go
+          token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
