@@ -30,6 +30,8 @@ const (
 	// MinLevel is the minimum logging level supported. All verbosity values lower will be
 	// clamped to this value.
 	MinLevel = 0
+
+	severityKey = "severity"
 )
 
 // BuildInfo allows the application to add build info to the logger by default. Any non empty
@@ -143,7 +145,7 @@ func WarnWrap(
 	helper, logger := AlwaysFromContext(ctx).WithCallStackHelper()
 	helper()
 
-	logger.Info(message, append([]any{"severity", "warning"}, keysAndValues...)...)
+	logger.Info(message, append([]any{severityKey, "warning"}, keysAndValues...)...)
 
 	return fmt.Errorf("%s: %w", message, err)
 }
@@ -160,7 +162,7 @@ func Info(
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Info(message, append([]any{"severity", "info"}, keysAndValues...)...)
+	logger.Info(message, append([]any{severityKey, "info"}, keysAndValues...)...)
 }
 
 // Error gets a logger from the given context and logs the error and message and optional values
@@ -176,7 +178,7 @@ func Error(
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Error(err, message, append([]any{"severity", "error"}, keysAndValues...)...)
+	logger.Error(err, message, append([]any{severityKey, "error"}, keysAndValues...)...)
 }
 
 // V gets a logger from the given context for the level specified.
@@ -197,7 +199,7 @@ func Warn(ctx context.Context, message string, keysAndValues ...any) {
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.Info(message, append([]any{"severity", "warning"}, keysAndValues...)...)
+	logger.Info(message, append([]any{severityKey, "warning"}, keysAndValues...)...)
 }
 
 // Warning is an alias of the `Warn` function.
@@ -217,7 +219,7 @@ func Debug(ctx context.Context, message string, keysAndValues ...any) {
 
 	// NOTE(jkoelker) prepend the severity to ensure it is correct if a single `keysAndValues`
 	//                argument is passed or an odd number.
-	logger.V(1).Info(message, append([]any{"severity", "debug"}, keysAndValues...)...)
+	logger.V(1).Info(message, append([]any{severityKey, "debug"}, keysAndValues...)...)
 }
 
 // Discard returns a Logger that discards all messages logged to it.  It can be

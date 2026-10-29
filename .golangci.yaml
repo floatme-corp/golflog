@@ -3,14 +3,16 @@ version: '2'
 linters:
   default: all
   disable:
-    - exhaustruct
+    - exhaustruct # deprecated in favor of exhaustruct_v5.
+    - exhaustruct_v5
     - paralleltest
     - testpackage
     - depguard
     - err113
     - revive
     - noinlineerr
-    - wsl
+    - wsl # deprecated in favor of wsl_v5.
+    - gomodguard # deprecated by gomodguard_v2.
 
   settings:
     funlen:
