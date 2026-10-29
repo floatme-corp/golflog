@@ -15,25 +15,23 @@
 
 # NOTE(jkoelker) Get as many dependancies from official docker images to allow
 #                `dependabot` to bump them
-FROM docker.io/golangci/golangci-lint:v2.10.1-alpine as golangci-lint
-FROM docker.io/hadolint/hadolint:v2.14.0-alpine as hadolint
-FROM docker.io/vektra/mockery:v3.6.0 as mockery
+FROM docker.io/golangci/golangci-lint:v2.15.0-alpine AS golangci-lint
+FROM docker.io/hadolint/hadolint:v2.15.1-alpine AS hadolint
+FROM docker.io/vektra/mockery:v3.9.0 AS mockery
 
-FROM docker.io/golang:1.26.0-alpine as builder
+FROM docker.io/golang:1.27.3-alpine AS builder
 
 # NOTE(jkoelker) install the tools in the builder here to improve layer
 #                caching of the published devkit.
 ENV GOBIN=/tools
-COPY tools /go/src/github.com/floatme-corp/golflog/
+COPY tools/go.mod tools/go.sum /go/src/github.com/floatme-corp/golflog/
 WORKDIR /go/src/github.com/floatme-corp/golflog
 
-# NOTE(jkoelker) We want word splitting for the output of `go list`
-# hadolint ignore=SC2046,DL3062
-RUN mkdir -p /tools \
-    && go install -v $(go list -e -f '{{ join .Imports " " }}' -tags=tools)
+# hadolint ignore=DL3062
+RUN mkdir -p /tools && go install tool
 
 # NOTE(jkoelker) From here we care about layers
-FROM docker.io/golang:1.26.0-alpine
+FROM docker.io/golang:1.27.3-alpine
 
 # NOTE(Kramer): Set the PATH for bash because alpine is setup for sh.
 # NOTE(jkoelker) Ignore "Pin versions in apk add"
