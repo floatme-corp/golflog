@@ -19,6 +19,10 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "chore(go)"
+    # Tools from go.mod tool directives are marked indirect, which dependabot
+    # skips by default.
+    allow:
+      - dependency-type: "all"
     groups:
       gotools:
         patterns:
