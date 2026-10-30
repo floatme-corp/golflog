@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/floatme-corp/golflog/compare/v1.9.1...v1.9.2) (2026-10-29)
+
+
+### Bug Fixes
+
+* **lint:** fix lint errors from golangci-lint v2.15 ([c749008](https://github.com/floatme-corp/golflog/commit/c7490086c82f8309f66dc38fa5768b17bc8d8946))
+
 ## [1.9.1](https://github.com/floatme-corp/golflog/compare/v1.9.0...v1.9.1) (2025-11-28)
 
 
